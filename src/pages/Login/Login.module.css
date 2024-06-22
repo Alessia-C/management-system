@@ -1,0 +1,75 @@
+.wrapPage {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url("../../assets/images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapPage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000012;
+}
+
+.structure {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+}
+
+.structure.brand :where(h1, h3) {
+  color: #fff;
+}
+
+.structure h1 {
+  font-size: clamp(2.4rem, 6.5vw, 8em);
+  font-weight: 800;
+}
+.structure h3 {
+  font-size: clamp(1.8rem, 3vw, 4em);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.brand {
+  padding: 4em;
+  flex-direction: column;
+}
+
+.auth {
+  background-color: #fff;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  align-items: center;
+}
+
+.wrapAuth{
+  width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapPage {
+    flex-direction: column;
+  }
+
+  .brand{
+    padding: 2em;
+    text-align: center;
+  }
+
+  .auth {
+    flex: 3;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 0px;
+  }
+}

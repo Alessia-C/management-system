@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import React, { Fragment } from "react";
-import TextComponent from "./InputComponent/TextComponent";
+import TextComponent from "../UI/InputComponent/TextComponent";
 import { Box, Button } from "@mui/material";
 import * as Yup from "yup";
+import classes from './Form.module.css'
 
 const FormComponent = ({
   initialValues,
@@ -10,6 +11,7 @@ const FormComponent = ({
   elements,
   handleSubmit,
   labelCta,
+  style = 'fullColumn'
 }) => {
   const formik = useFormik({
     initialValues: initialValues,
@@ -37,13 +39,13 @@ const FormComponent = ({
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={classes[style]}>
       {elements.map((element) => (
         <Fragment key={element.label}>{formatInputHandler(element)}</Fragment>
       ))}
-      <Box sx={{ display: "flex", gap: 1 }}>
+      <Box className={classes.wrapCta}>
         <Button>Annulla</Button>
-        <Button variant="outlined" type="submit">
+        <Button variant="contained" type="submit">
           {labelCta}
         </Button>
       </Box>
