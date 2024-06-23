@@ -1,0 +1,50 @@
+.wrapApp {
+  height: 100vh;
+  background: #d7d5d5;
+  display: flex;
+  gap: 2em;
+  padding: 2em;
+}
+
+.cardIntro {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  margin-top: 2em;
+}
+.cardIntro h3 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+.wrapContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  margin-top: 2em;
+  height: 68vh;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 1100px) {
+  .cardIntro {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wrapContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    margin-top: 2em;
+    height: 90%;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .cardIntro {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .wrapContent {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

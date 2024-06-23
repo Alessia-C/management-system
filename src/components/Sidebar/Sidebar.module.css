@@ -1,0 +1,48 @@
+.wrapSidebar {
+  background-color: #0a0d07;
+  color: #fff;
+  flex: 1;
+  height: calc(95vh - 2em);
+  border-radius: 24px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebarContainer {
+  height: 80%;
+}
+
+.wrapSidebar ul li {
+  padding: 0.6em 0;
+  margin: 0;
+}
+.wrapSidebar a {
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.sidebarList a div {
+  min-width: fit-content;
+  height: fit-content;
+}
+
+.wrapSidebar ul li :where(a.active) {
+  background: #a67b9f;
+  width: 100%;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+}
+.wrapSidebar svg {
+  fill: #fff;
+}
+
+.logout {
+  color: #fff !important;
+  padding: 0 !important;
+}
