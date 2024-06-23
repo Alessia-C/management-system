@@ -15,7 +15,7 @@
 }
 
 .wrapSidebar ul li {
-  padding: 0.6em 0;
+  padding: 0;
   margin: 0;
 }
 .wrapSidebar a {
@@ -32,12 +32,16 @@
   height: fit-content;
 }
 
+.wrapSidebar ul li a{
+  padding: 0.4em;
+}
+
 .wrapSidebar ul li :where(a.active) {
   background: #a67b9f;
   width: 100%;
-  padding: 0.4em 0.8em;
   border-radius: 6px;
 }
+
 .wrapSidebar svg {
   fill: #fff;
 }

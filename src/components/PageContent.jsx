@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import classes from "../pages/Dashboard/Dashboard.module.css";
 
-const PageContent = ({ children }) => {
+const PageContent = ({ children, label }) => {
   return (
     <Box className={classes.wrapApp}>
       <Sidebar />
@@ -11,12 +11,12 @@ const PageContent = ({ children }) => {
         component="main"
         sx={{
           flex: 4,
-          // p: 3,
-          // background: "#fff",
-          // borderRadius: "24px",
           height: "calc( 95vh - 2em )",
         }}
       >
+        <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
+          {label}
+        </Typography>
         {children}
       </Box>
     </Box>
