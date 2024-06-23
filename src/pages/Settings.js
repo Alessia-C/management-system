@@ -3,7 +3,7 @@ import PageContent from "../components/PageContent";
 
 const Settings = () => {
   return (
-    <PageContent>
+    <PageContent label='Settings'>
       <div>Settings</div>
     </PageContent>
   );

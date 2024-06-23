@@ -8,7 +8,10 @@ import { tokenLoader } from "./unit/auth";
 import DashboardPage from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import { logout } from "./pages/Logout";
-import UsersList from "./pages/UsersList";
+import Employees from "./pages/Employees";
+import Settings from "./pages/Settings";
+import Projects from "./pages/Projects";
+import Clients from "./pages/Clients";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,19 +32,19 @@ function App() {
         },
         {
           path: "clients",
-          element: <UsersList />,
+          element: <Clients />,
         },
         {
           path: "employees",
-          element: <UsersList />,
+          element: <Employees />,
         },
         {
           path: "projects",
-          element: <UsersList />,
+          element: <Projects />,
         },
         {
           path: "settings",
-          element: <UsersList />,
+          element: <Settings />,
         },
         {
           path: "logout",
@@ -50,7 +53,7 @@ function App() {
       ],
     },
   ]);
-  
+
   return (
     <>
       <ThemeProvider theme={theme}>

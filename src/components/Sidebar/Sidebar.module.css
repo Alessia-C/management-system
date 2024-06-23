@@ -16,7 +16,7 @@
 
 .wrapSidebar ul li {
   padding: 0;
-  margin: 0;
+  margin: 0 0 1em;
 }
 .wrapSidebar a {
   width: 100%;

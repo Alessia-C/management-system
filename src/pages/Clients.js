@@ -48,7 +48,7 @@ function DeleteUserActionItem({ deleteUser, ...props }) {
   );
 }
 
-const UsersList = () => {
+const Clients = () => {
   const { isFetching, error, data } = useFetch("clients", []);
 
   const deleteUser = (client) => {
@@ -161,4 +161,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default Clients;
