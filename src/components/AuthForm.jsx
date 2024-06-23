@@ -2,7 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import FormComponent from "./FormComponent/FormComponent";
 import supabase from "../backend/supabase";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import classes from "../pages/Login/Login.module.css";
 

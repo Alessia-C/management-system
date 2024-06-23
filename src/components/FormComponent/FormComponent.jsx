@@ -3,7 +3,8 @@ import React, { Fragment } from "react";
 import TextComponent from "../UI/InputComponent/TextComponent";
 import { Box, Button } from "@mui/material";
 import * as Yup from "yup";
-import classes from './Form.module.css'
+import classes from "./Form.module.css";
+import PswComponent from "../UI/InputComponent/PswComponent";
 
 const FormComponent = ({
   initialValues,
@@ -11,7 +12,7 @@ const FormComponent = ({
   elements,
   handleSubmit,
   labelCta,
-  style = 'fullColumn'
+  style = "fullColumn",
 }) => {
   const formik = useFormik({
     initialValues: initialValues,
@@ -26,9 +27,11 @@ const FormComponent = ({
 
     switch (element.type) {
       case "text":
-      case "password":
       case "textarea":
         input = <TextComponent formik={formik} element={element} />;
+        break;
+      case "password":
+        input = <PswComponent formik={formik} element={element} />;
         break;
       default:
         input = "Componente non trovato";
