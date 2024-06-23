@@ -2,9 +2,9 @@ import React from "react";
 import * as Yup from "yup";
 import FormComponent from "./FormComponent/FormComponent";
 import supabase from "../backend/supabase";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import classes from '../pages/Login/Login.module.css'
+import classes from "../pages/Login/Login.module.css";
 
 const validation = {
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -45,7 +45,7 @@ const AuthForm = () => {
       }
 
       console.log("Dati ottenuti:", data);
-      const token = data.access_token;
+      const token = data.session.access_token;
       localStorage.setItem("token", token);
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 1);

@@ -11,7 +11,7 @@ export function getTokenDuration() {
 export function getAuthToken() {
   const token = localStorage.getItem("token");
   const tokenDuration = getTokenDuration();
-
+  console.log(tokenDuration);
   if (tokenDuration < 0) {
     return "EXPIRED";
   }
