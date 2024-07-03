@@ -2,7 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import FormComponent from "./FormComponent/FormComponent";
 import supabase from "../backend/supabase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import classes from "../pages/Login/Login.module.css";
 
@@ -11,7 +11,7 @@ const validation = {
   password: Yup.string().required("Required"),
 };
 
-const AuthForm = () => {
+const AuthForm = ({ intro }) => {
   const navigate = useNavigate();
 
   const initialValues = {
@@ -59,18 +59,16 @@ const AuthForm = () => {
 
   return (
     <>
-      <Box className={classes.authIntro}>
-        <Typography variant="h3">Login</Typography>
-        <Typography variant="body1">
-          Inserisci le tue credenziali per accedere al tuo profilo e usufruire
-          di tutti i nostri servizi.
-        </Typography>
-      </Box>
+      {/* <Box className={classes.authIntro}>
+        <Typography variant="h3">{intro.title}</Typography>
+        <Typography variant="body1">{intro.text}</Typography>
+      </Box> */}
       <FormComponent
         initialValues={initialValues}
         validation={validation}
         elements={formElement}
         handleSubmit={handleSubmit}
+        login
         labelCta="Accedi"
         style={`authForm`}
       />

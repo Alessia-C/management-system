@@ -1,21 +1,67 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
-import AuthForm from "../../components/AuthForm";
-import classes from "./Login.module.css";
+import AuthPageContent from "../../components/AuthPage/AuthPageContent";
+import ReusableForm from "../../components/ReusableForm";
+import { useNavigate } from "react-router-dom";
+import supabase from "../../backend/supabase";
+
+const introAuthForm = {
+  title: "login",
+  text: "Inserisci le tue credenziali per accedere al tuo profilo e usufruire di tutti i nostri servizi.",
+};
+
+const fields = [
+  {
+    label: "Inserisci l'email",
+    name: "email",
+    type: "email",
+    value: "email",
+    required: true,
+  },
+  {
+    label: "Inserisci la password",
+    name: "password",
+    type: "password",
+    value: "password",
+    login: true,
+    required: true,
+  },
+];
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      if (error) {
+        throw error;
+      }
+
+      console.log("Dati ottenuti:", data);
+      const token = data.session.access_token;
+      localStorage.setItem("token", token);
+      const expiration = new Date();
+      expiration.setHours(expiration.getHours() + 1);
+      localStorage.setItem("expiration", expiration.toISOString());
+
+      return navigate("/");
+    } catch (error) {
+      console.error("Errore durante il login:", error);
+    }
+  };
+
   return (
-    <Box className={classes.wrapPage}>
-      <Box className={`${classes.structure} ${classes.brand}`}>
-        <Typography variant="h3">Welcome in</Typography>
-        <Typography variant="h1">ManagePro</Typography>
-      </Box>
-      <Box className={`${classes.structure} ${classes.auth}`}>
-        <Box sx={{ width: "80%" }}>
-          <AuthForm />
-        </Box>
-      </Box>
-    </Box>
+    <AuthPageContent intro={introAuthForm}>
+      <ReusableForm
+        fields={fields}
+        labelCta="Accedi"
+        onSubmit={handleSubmit}
+        style="authForm"
+      />
+    </AuthPageContent>
   );
 };
 

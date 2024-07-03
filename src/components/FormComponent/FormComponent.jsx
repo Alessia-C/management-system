@@ -11,6 +11,7 @@ const FormComponent = ({
   validation,
   elements,
   handleSubmit,
+  login,
   labelCta,
   style = "fullColumn",
 }) => {
@@ -31,7 +32,7 @@ const FormComponent = ({
         input = <TextComponent formik={formik} element={element} />;
         break;
       case "password":
-        input = <PswComponent formik={formik} element={element} />;
+        input = <PswComponent formik={formik} element={element} login={login} />;
         break;
       default:
         input = "Componente non trovato";
