@@ -1,0 +1,25 @@
+.wrapCardContent {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.cardAvatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.boldText {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wrapCta {
+    display: flex;
+    gap: 1;
+}
+
+.wrapCta button {
+    width: 100%;
+}
