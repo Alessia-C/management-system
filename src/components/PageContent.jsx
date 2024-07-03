@@ -11,7 +11,8 @@ const PageContent = ({ children, label }) => {
         component="main"
         sx={{
           flex: 4,
-          height: "calc( 95vh - 2em )",
+          height: "100%",
+          overflow: "hidden",
         }}
       >
         <Typography variant="h4" sx={{ marginBottom: "1rem" }}>

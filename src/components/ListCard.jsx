@@ -14,6 +14,11 @@ const ListCard = ({ cards, loading }) => {
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: "2em",
           }}
+          style={{
+            height: "calc( 95% - 3em)",
+            overflow: "hidden",
+            overflowY: "scroll",
+          }}
         >
           {cards.map((item) => {
             return (

@@ -4,6 +4,7 @@ import TableComponent from "../components/TableComponent";
 import useFetch from "../hooks/useFetch";
 import ListCard from "../components/ListCard";
 import SwitchComponentView from "../components/UI/SwitchComponentView";
+import { Box } from "@mui/material";
 
 const Employees = () => {
   const { isFetching, error, data } = useFetch("employees", []);
