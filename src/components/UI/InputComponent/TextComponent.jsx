@@ -1,13 +1,13 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-const TextComponent = ({ formik, element, onChange }) => {
+const TextComponent = ({ formik, element }) => {
   return (
     <TextField
       name={element.name}
       label={element.label}
       type={element.type}
-      value={formik.values[element.name] || ''}
+      value={formik.values[element.name] || ""}
       onChange={formik.handleChange}
       color={
         formik.touched[element] || formik.errors[element] ? "error" : "primary"

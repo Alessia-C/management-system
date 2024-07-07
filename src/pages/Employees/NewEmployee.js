@@ -4,6 +4,10 @@ import ReusableForm from "../../components/ReusableForm";
 import Card from "../../components/UI/Card/Card";
 import { usePost } from "../../hooks/useFetch";
 import dayjs from "dayjs";
+import positions, {
+  departments,
+  seniorityLevels,
+} from "../../utils/employeesInfo";
 
 const fields = [
   {
@@ -44,22 +48,25 @@ const fields = [
   {
     label: "Position",
     name: "position",
-    type: "text",
+    type: "autocomplete",
     value: "position",
+    options: positions,
     required: true,
   },
   {
     label: "Settore",
     name: "department",
-    type: "text",
+    type: "autocomplete",
     value: "department",
+    options: departments,
     required: true,
   },
   {
     label: "Seniority",
     name: "seniority",
-    type: "text",
+    type: "autocomplete",
     value: "seniority",
+    options: seniorityLevels,
     required: true,
   },
 ];
@@ -67,8 +74,8 @@ const fields = [
 const NewEmployee = () => {
   const { isFetching, data, postData } = usePost(null);
   const handleSubmit = async (values) => {
-    const newValues = {...values}
-    newValues.startDate = dayjs(newValues.startDate).format('YYYY-MM-DD')
+    const newValues = { ...values };
+    newValues.startDate = dayjs(newValues.startDate).format("YYYY-MM-DD");
     await postData("employees", [newValues]);
   };
 

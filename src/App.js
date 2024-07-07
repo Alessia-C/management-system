@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material";
 import { Provider } from "react-redux";
 import RootPage from "./pages/Root";
 import ErrorPage from "./pages/Error";
-import { tokenLoader } from "./unit/auth";
+import { tokenLoader } from "./utils/auth";
 import DashboardPage from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import { logout } from "./pages/Logout";

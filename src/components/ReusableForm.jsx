@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { updateForm } from "../store/formSlice";
 import classes from "./FormComponent/Form.module.css";
-import { renderInput } from "./FormInput";
+import { renderInput } from "../utils/FormInput";
 
 const ReusableForm = ({
   fields,
@@ -23,6 +23,8 @@ const ReusableForm = ({
       Object.keys(field.fields).forEach((subField) => {
         acc[field.name][subField] = formData[field.name]?.[subField] || "";
       });
+    } else if (field.type === "date") {
+      acc[field.name] = formData[field.name] || null;
     } else {
       acc[field.name] =
         formData[field.name] !== undefined ? formData[field.name] : "";
