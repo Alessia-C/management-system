@@ -16,16 +16,18 @@ const SwitchComponentView = ({ mode, setMode }) => {
       <Box>Filter</Box>
       <Box>
         <Button
-          variant={mode === "card" ? "contained" : "outlined"}
+          variant={mode === "card" ? "outlined" : "text"}
+          sx={{ borderColor: "#191919" }}
           onClick={() => setMode("card")}
         >
-          <ViewModuleIcon />
+          <ViewModuleIcon sx={{ color: "#191919" }} />
         </Button>
         <Button
-          variant={mode === "list" ? "contained" : "outlined"}
+          variant={mode === "list" ? "outlined" : "text"}
+          sx={{ borderColor: "#191919" }}
           onClick={() => setMode("list")}
         >
-          <MenuIcon />
+          <MenuIcon sx={{ color: "#191919" }} />
         </Button>
       </Box>
     </Box>

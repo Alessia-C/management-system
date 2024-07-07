@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "../Card/Card";
-import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import classes from "./CardUser.module.css";
+import { Link } from "react-router-dom";
 
 const CardUser = ({ card, src }) => {
   return (
@@ -18,15 +19,22 @@ const CardUser = ({ card, src }) => {
           />
           {/* )} */}
           <Typography variant="h5">{card.name}</Typography>
-          <Typography variant="body1" className={classes.boldText}>
-            {card.position}
-          </Typography>
+          <Chip
+            label={card.position}
+            sx={{ fontWeight: "800", fontSize: "16px" }}
+          />
         </Box>
         <Box sx={{ width: "100%" }} className={classes.content}>
+          {/*
+            <Box>
+              {card.idProject && (
+                <>
+                  <Typography variant="body1">Un progetto attivo: </Typography>
+                  <Link to={`#/${card.idProject}`}>Vai al progetto</Link>
+                </>
+              )}
+            </Box> */}
           <Box className={classes.wrapCta}>
-            {card.idProject && (
-              <Button variant="outlined">Vai al progetto</Button>
-            )}
             <Button variant="contained">Dettaglio</Button>
           </Box>
         </Box>

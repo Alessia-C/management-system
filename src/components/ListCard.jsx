@@ -11,7 +11,7 @@ const ListCard = ({ cards, loading }) => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gap: "2em",
           }}
           style={{

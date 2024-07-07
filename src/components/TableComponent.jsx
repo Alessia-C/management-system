@@ -18,7 +18,7 @@ const CustomDataGrid = styled(DataGrid)(({ theme }) => ({
 const TableComponent = ({ rows, columns, loading }) => {
   return (
     <Box
-      sx={{ width: "100%", height: "100%", maxHeight: "calc(95vh - 5.5em)" }}
+      sx={{ width: "100%", height: "calc(90% - 1em )"}}
     >
       <CustomDataGrid
         rows={rows}

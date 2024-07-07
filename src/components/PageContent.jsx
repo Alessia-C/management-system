@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import classes from "../pages/Dashboard/Dashboard.module.css";
@@ -15,9 +15,18 @@ const PageContent = ({ children, label }) => {
           overflow: "hidden",
         }}
       >
-        <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
-          {label}
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "2em",
+          }}
+        >
+          <Typography variant="h4">{label}</Typography>
+          <Button variant="contained">Nuovo</Button>
+        </Box>
+        <Divider sx={{ marginBottom: "2em" }} />
         {children}
       </Box>
     </Box>

@@ -4,7 +4,6 @@ import TableComponent from "../components/TableComponent";
 import useFetch from "../hooks/useFetch";
 import ListCard from "../components/ListCard";
 import SwitchComponentView from "../components/UI/SwitchComponentView";
-import { Box } from "@mui/material";
 
 const Employees = () => {
   const { isFetching, error, data } = useFetch("employees", []);
@@ -29,13 +28,6 @@ const Employees = () => {
         flex: 1,
       },
       {
-        field: "phone",
-        headerName: "Telefono",
-        filterable: false,
-        resizable: false,
-        flex: 1,
-      },
-      {
         field: "email",
         headerName: "Email",
         filterable: false,
@@ -43,8 +35,8 @@ const Employees = () => {
         flex: 1,
       },
       {
-        field: "position",
-        headerName: "Ruolo",
+        field: "phone",
+        headerName: "Telefono",
         filterable: false,
         resizable: false,
         flex: 1,
@@ -56,21 +48,28 @@ const Employees = () => {
         resizable: false,
         flex: 1,
       },
+      {
+        field: "position",
+        headerName: "Ruolo",
+        filterable: false,
+        resizable: false,
+        flex: 1,
+      },
 
-      {
-        field: "salary",
-        headerName: "RAL",
-        filterable: false,
-        resizable: false,
-        flex: 1,
-      },
-      {
-        field: "startDate",
-        headerName: "Data Assunzione",
-        filterable: false,
-        resizable: false,
-        flex: 1,
-      },
+      // {
+      //   field: "salary",
+      //   headerName: "RAL",
+      //   filterable: false,
+      //   resizable: false,
+      //   flex: 1,
+      // },
+      // {
+      //   field: "startDate",
+      //   headerName: "Data Assunzione",
+      //   filterable: false,
+      //   resizable: false,
+      //   flex: 1,
+      // },
     ],
     [data]
   );
