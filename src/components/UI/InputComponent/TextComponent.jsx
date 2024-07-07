@@ -7,13 +7,19 @@ const TextComponent = ({ formik, element }) => {
       name={element.name}
       label={element.label}
       type={element.type}
-      value={formik.values[element.name] || ""}
+      value={formik.values[element.name] || null}
       onChange={formik.handleChange}
       color={
-        formik.touched[element] || formik.errors[element] ? "error" : "primary"
+        formik.touched[element.name] && formik.errors[element.name]
+          ? "error"
+          : "primary"
       }
       required={element.required ? element.required : false}
-      helperText={formik.touched[element] ? formik.errors[element] : ""}
+      helperText={
+        formik.touched[element.name] && formik.errors[element.name]
+          ? formik.errors[element.name]
+          : ""
+      }
       autoComplete={element.name}
       fullWidth
       {...formik.getFieldProps(element.name)}
@@ -21,14 +27,4 @@ const TextComponent = ({ formik, element }) => {
   );
 };
 
-// fullWidth
-//               name={field.name}
-//               label={field.label}
-//               value={formik.values[field.name]}
-//               onChange={handleChange}
-//               color={formik.touched[field.name] && formik.errors[field.name] ? "error" : "primary"}
-//               required={field.required || false}
-//               helperText={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : ""}
-//               autoComplete={field.value}
-//               {...formik.getFieldProps(field.name)}
 export default TextComponent;

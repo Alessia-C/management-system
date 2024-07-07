@@ -12,6 +12,7 @@ const ReusableForm = ({
   style = "genericForm",
   onSubmit,
   stepsForm,
+  login,
   checkBtn,
   handleNext,
   handleBack,
@@ -47,20 +48,21 @@ const ReusableForm = ({
     },
   });
 
-
   return (
     <form onSubmit={formik.handleSubmit} className={classes[style]}>
       {fields.map((element, i) => (
         <Fragment key={i}>{renderInput(element, formik)}</Fragment>
       ))}
       <Box className={classes.wrapCta}>
-        {stepsForm && !checkBtn ? (
+        {!login && (
+          <Button
+            onClick={handleBack !== null ? handleBack : () => navigate(-1)}
+          >
+            {handleBack !== null ? "Indietro" : "Annulla"}
+          </Button>
+        )}
+        {!login && stepsForm && !checkBtn ? (
           <>
-            <Button
-              onClick={handleBack !== null ? handleBack : () => navigate(-1)}
-            >
-              {handleBack !== null ? "Indietro" : "Annulla"}
-            </Button>
             <Button variant="contained" onClick={handleNext}>
               Avanti
             </Button>
@@ -69,14 +71,6 @@ const ReusableForm = ({
           <Button variant="contained" type="submit">
             {labelCta}
           </Button>
-        )}
-        {!stepsForm && (
-          <>
-            <Button onClick={() => navigate(-1)}>Annulla</Button>
-            <Button variant="contained" type="submit">
-              {labelCta}
-            </Button>
-          </>
         )}
       </Box>
     </form>

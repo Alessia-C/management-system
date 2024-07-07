@@ -1,6 +1,6 @@
 .wrapCard {
   width: 100%;
-  height: max-content;
+  /* height: max-content; */
   border-radius: 24px;
   padding: 2em;
   background: #fff;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import supabase from "../backend/supabase";
+import { useNavigate } from "react-router-dom";
 
-export const useFetch = (fetch, initialValue, ids = "*") => {
+export const useFetch = (fetch, initialValue) => {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
   const [data, setData] = useState(initialValue);
@@ -10,7 +11,7 @@ export const useFetch = (fetch, initialValue, ids = "*") => {
     async function getfetchData() {
       setIsFetching(true);
       try {
-        const data = await supabase.from(fetch).select(ids);
+        const data = await supabase.from(fetch).select("*");
         setData(data.data);
       } catch (error) {
         setError({ message: error.message || "Failed to fetch data." });
@@ -21,6 +22,34 @@ export const useFetch = (fetch, initialValue, ids = "*") => {
 
     getfetchData();
   }, [fetch]);
+
+  return { isFetching, error, data };
+};
+
+export const useGetUser = (fetch, initialValue, id) => {
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState();
+  const [data, setData] = useState(initialValue);
+
+  useEffect(() => {
+    async function getfetchData() {
+      setIsFetching(true);
+      try {
+        const data = await supabase
+          .from(fetch)
+          .select("*")
+          .eq("id", id)
+          .single();
+        setData(data.data);
+      } catch (error) {
+        setError({ message: error.message || "Failed to fetch data." });
+      } finally {
+        setIsFetching(false);
+      }
+    }
+
+    getfetchData();
+  }, [fetch, id]);
 
   return { isFetching, error, data };
 };
@@ -47,4 +76,40 @@ export const usePost = (initialValues) => {
   };
 
   return { isFetching, error, data, postData };
+};
+
+export const useDeleteDataById = () => {
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setIsSuccess] = useState(false);
+  const navigate = useNavigate()
+
+  const deleteById = async (fetch, id) => {
+    try {
+      setIsFetching(true);
+      const { error } = await supabase
+        .from(fetch) // Replace 'users' with the name of your user table if different
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        console.error('Error deleting user from users table:', error);
+        setError(error);
+        setIsSuccess(false);
+        return;
+      }
+
+      setIsSuccess(true);
+      setError(null);
+      navigate(-1)
+    } catch (err) {
+      console.error('Error during deletion:', err);
+      setError(err);
+      setIsSuccess(false);
+    } finally {
+      setIsFetching(false);
+    }
+  };
+
+  return { isFetching, deleteById, success, error };
 };

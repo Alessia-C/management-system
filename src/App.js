@@ -17,6 +17,7 @@ import Reset from "./pages/Login/Reset";
 import store from "./store";
 import OutletPage from "./components/OutletPage";
 import NewEmployee from "./pages/Employees/NewEmployee";
+import DetailEmployee from "./pages/Employees/DetailEmployee";
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +55,10 @@ function App() {
             {
               path: "newemployee",
               element: <NewEmployee />,
+            },
+            {
+              path: "detailemployee/:id",
+              element: <DetailEmployee />,
             },
           ],
         },

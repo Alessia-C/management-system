@@ -1,24 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card/Card";
 import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import classes from "./CardUser.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CardUser = ({ card, src }) => {
+  const navigate = useNavigate();
   return (
     <Card>
       <Box className={classes.wrapCardContent}>
         <Box className={classes.introCard}>
-          {/* {card.src && ( */}
           <Avatar
             // src={card.src}
             src={src}
-            alt={card.name}
+            alt={card.full_name}
             className={classes.cardAvatar}
             sx={{ width: "150px", height: "150px" }}
           />
-          {/* )} */}
-          <Typography variant="h5">{card.name}</Typography>
+          <Typography variant="h5">{card.full_name}</Typography>
           <Chip
             label={card.position}
             sx={{ fontWeight: "800", fontSize: "16px" }}
@@ -35,7 +34,13 @@ const CardUser = ({ card, src }) => {
               )}
             </Box> */}
           <Box className={classes.wrapCta}>
-            <Button variant="contained">Dettaglio</Button>
+            <Button
+              variant="contained"
+              type="button"
+              onClick={() => navigate(`detailemployee/${card.id}`)}
+            >
+              Dettaglio
+            </Button>
           </Box>
         </Box>
       </Box>

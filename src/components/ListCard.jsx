@@ -12,6 +12,7 @@ const ListCard = ({ cards, loading }) => {
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateRows: "max-content",
             gap: "2em",
           }}
           style={{

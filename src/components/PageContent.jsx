@@ -3,7 +3,13 @@ import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import classes from "../pages/Dashboard/Dashboard.module.css";
 
-const PageContent = ({ children, label, action }) => {
+const PageContent = ({
+  children,
+  label,
+  action,
+  color = "primary",
+  labelCta = "Nuovo",
+}) => {
   return (
     <Box className={classes.wrapApp}>
       <Sidebar />
@@ -25,8 +31,8 @@ const PageContent = ({ children, label, action }) => {
         >
           <Typography variant="h4">{label}</Typography>
           {action && (
-            <Button variant="contained" onClick={action}>
-              Nuovo
+            <Button variant="contained" onClick={action} color={color}>
+              {labelCta}
             </Button>
           )}
         </Box>
