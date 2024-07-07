@@ -23,7 +23,7 @@ const Employees = () => {
         hide: true,
       },
       {
-        field: "name",
+        field: "full_name",
         headerName: "Nome",
         filterable: false,
         resizable: false,
@@ -37,7 +37,7 @@ const Employees = () => {
         flex: 1,
       },
       {
-        field: "phone",
+        field: "phone_number",
         headerName: "Telefono",
         filterable: false,
         resizable: false,

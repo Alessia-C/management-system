@@ -9,15 +9,15 @@ const SelectComponent = ({ element, formik }) => {
         labelId={`${element.name}-select`}
         id={element.name}
         label={element.label}
-        value={formik.values[element.name] || null}
-        onChange={(event, newValue) => {
-          formik.setFieldValue(element.name, newValue);
+        value={formik.values[element.name] || ""}
+        onChange={(event) => {
+          formik.setFieldValue(element.name, event.target.value);
         }}
       >
         {element.options ? (
-          element.options.map((item) => {
-            <MenuItem value={item.value}>{item.value}</MenuItem>;
-          })
+          element.options.map((item) => (
+            <MenuItem value={item.value} key={item.value}>{item.label}</MenuItem>
+          ))
         ) : (
           <MenuItem value={0}>Non ci sono opzioni disponibili</MenuItem>
         )}

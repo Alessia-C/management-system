@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../Card/Card";
+import Card from "../UI/Card/Card";
 import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import classes from "./CardUser.module.css";
 import { Link } from "react-router-dom";

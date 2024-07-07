@@ -21,7 +21,7 @@ export const renderInput = (element, formik) => {
       input = <DateComponent formik={formik} element={element} />;
       break;
     case "select":
-      input = <SelectComponent formik={formik} element={element} />; 
+      input = <SelectComponent formik={formik} element={element} />;
       break;
     case "autocomplete":
       input = <AutocompleteComponent formik={formik} element={element} />;

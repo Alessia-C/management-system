@@ -14,9 +14,9 @@ const TextComponent = ({ formik, element }) => {
       }
       required={element.required ? element.required : false}
       helperText={formik.touched[element] ? formik.errors[element] : ""}
-      autoComplete={element.value}
+      autoComplete={element.name}
       fullWidth
-      {...formik.getFieldProps(element.value)}
+      {...formik.getFieldProps(element.name)}
     />
   );
 };

@@ -28,7 +28,7 @@ const PswComponent = ({ formik, element,  }) => {
         }
         required={element.required ? element.required : false}
         helperText={formik.touched[element] ? formik.errors[element] : ""}
-        autoComplete={element.value}
+        autoComplete={element.name}
         fullWidth
         InputProps={{
           endAdornment: (

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import CardUser from "./UI/CardUser/CardUser";
+import CardUser from "./CardUser/CardUser";
 
 const ListCard = ({ cards, loading }) => {
   return (
