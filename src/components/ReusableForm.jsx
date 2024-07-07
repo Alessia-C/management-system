@@ -6,7 +6,12 @@ import { updateForm } from "../store/formSlice";
 import classes from "./FormComponent/Form.module.css";
 import { renderInput } from "./FormInput";
 
-const ReusableForm = ({ fields, labelCta = "Salva", style, onSubmit }) => {
+const ReusableForm = ({
+  fields,
+  labelCta = "Salva",
+  style = "genericForm",
+  onSubmit,
+}) => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.form.formData);
 

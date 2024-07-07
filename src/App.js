@@ -9,12 +9,14 @@ import { tokenLoader } from "./unit/auth";
 import DashboardPage from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import { logout } from "./pages/Logout";
-import Employees from "./pages/Employees";
+import Employees from "./pages/Employees/Employees";
 import Settings from "./pages/Settings";
 import Projects from "./pages/Projects";
 import Clients from "./pages/Clients";
 import Reset from "./pages/Login/Reset";
 import store from "./store";
+import OutletPage from "./components/OutletPage";
+import NewEmployee from "./pages/Employees/NewEmployee";
 
 function App() {
   const router = createBrowserRouter([
@@ -43,7 +45,17 @@ function App() {
         },
         {
           path: "employees",
-          element: <Employees />,
+          element: <OutletPage />,
+          children: [
+            {
+              index: true,
+              element: <Employees />,
+            },
+            {
+              path: "newemployee",
+              element: <NewEmployee />,
+            },
+          ],
         },
         {
           path: "projects",

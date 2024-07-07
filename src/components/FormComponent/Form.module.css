@@ -1,13 +1,27 @@
 .authForm {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+}
+.wrapCta {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 1.5em;
 }
 
-.authForm .wrapCta{
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 0.5em;
-    margin-top: 1.5em;
+.authForm .wrapCta {
+  flex-direction: column-reverse;
+}
+
+.genericForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 1em;
+}
+
+.genericForm .wrapCta {
+  grid-column: 1 / span 2;
+  justify-content: flex-end;
 }

@@ -10,7 +10,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import TableComponent from "../components/TableComponent";
 import dayjs from "dayjs";
-import useFetch from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 
 function DeleteUserActionItem({ deleteUser, ...props }) {
   const [open, setOpen] = useState(false);

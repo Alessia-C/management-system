@@ -3,7 +3,7 @@ import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import classes from "../pages/Dashboard/Dashboard.module.css";
 
-const PageContent = ({ children, label }) => {
+const PageContent = ({ children, label, action }) => {
   return (
     <Box className={classes.wrapApp}>
       <Sidebar />
@@ -24,7 +24,11 @@ const PageContent = ({ children, label }) => {
           }}
         >
           <Typography variant="h4">{label}</Typography>
-          <Button variant="contained">Nuovo</Button>
+          {action && (
+            <Button variant="contained" onClick={action}>
+              Nuovo
+            </Button>
+          )}
         </Box>
         <Divider sx={{ marginBottom: "2em" }} />
         {children}

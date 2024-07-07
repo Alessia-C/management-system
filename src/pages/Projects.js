@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import React, { useMemo } from "react";
-import useFetch from "../hooks/useFetch";
+import {useFetch} from "../hooks/useFetch";
 import PageContent from "../components/PageContent";
 import TableComponent from "../components/TableComponent";
 

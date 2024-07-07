@@ -1,12 +1,14 @@
 import React, { useMemo, useState } from "react";
-import PageContent from "../components/PageContent";
-import TableComponent from "../components/TableComponent";
-import useFetch from "../hooks/useFetch";
-import ListCard from "../components/ListCard";
-import SwitchComponentView from "../components/UI/SwitchComponentView";
+import PageContent from "../../components/PageContent";
+import TableComponent from "../../components/TableComponent";
+import { useFetch } from "../../hooks/useFetch";
+import ListCard from "../../components/ListCard";
+import SwitchComponentView from "../../components/UI/SwitchComponentView";
+import { useNavigate } from "react-router-dom";
 
 const Employees = () => {
   const { isFetching, error, data } = useFetch("employees", []);
+  const navigate = useNavigate();
 
   const [mode, setMode] = useState("card");
 
@@ -74,8 +76,12 @@ const Employees = () => {
     [data]
   );
 
+  const newEmployeeHandler = () => {
+    navigate("newemployee");
+  };
+
   return (
-    <PageContent label="Dipendenti">
+    <PageContent label="Dipendenti" action={newEmployeeHandler}>
       <SwitchComponentView mode={mode} setMode={setMode} />
       {mode === "card" ? (
         <ListCard cards={data} loading={isFetching} />
