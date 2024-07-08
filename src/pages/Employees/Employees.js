@@ -1,16 +1,15 @@
 import React, { useMemo, useState } from "react";
-import PageContent from "../../components/PageContent";
+import PageContent from "../../components/PageContent/PageContent";
 import TableComponent from "../../components/TableComponent";
 import { useFetch } from "../../hooks/useFetch";
 import ListCard from "../../components/ListCard";
 import SwitchComponentView from "../../components/UI/SwitchComponentView";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Employees = () => {
-  const { isFetching, error, data } = useFetch("employees", []);
+  const { data } = useFetch("employees", []);
   const navigate = useNavigate();
-
-  const [mode, setMode] = useState("card");
 
   const columns = useMemo(
     () => [
@@ -57,21 +56,6 @@ const Employees = () => {
         resizable: false,
         flex: 1,
       },
-
-      // {
-      //   field: "salary",
-      //   headerName: "RAL",
-      //   filterable: false,
-      //   resizable: false,
-      //   flex: 1,
-      // },
-      // {
-      //   field: "startDate",
-      //   headerName: "Data Assunzione",
-      //   filterable: false,
-      //   resizable: false,
-      //   flex: 1,
-      // },
     ],
     [data]
   );
@@ -80,14 +64,16 @@ const Employees = () => {
     navigate("newemployee");
   };
 
+  const cardElement = {
+    title: "full_name",
+    chip_label: "position",
+    chip_info: "department",
+    detail: "detailemployee"
+  }
+
   return (
     <PageContent label="Dipendenti" action={newEmployeeHandler}>
-      <SwitchComponentView mode={mode} setMode={setMode} />
-      {mode === "card" ? (
-        <ListCard cards={data} loading={isFetching} />
-      ) : (
-        <TableComponent columns={columns} rows={data} loading={isFetching} />
-      )}
+      <SwitchComponentView data={data} columns={columns} cardElement={cardElement} />
     </PageContent>
   );
 };

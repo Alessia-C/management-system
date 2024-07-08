@@ -1,7 +1,10 @@
 import { Box, Button, Divider, Typography } from "@mui/material";
 import React from "react";
-import Sidebar from "./Sidebar/Sidebar";
-import classes from "../pages/Dashboard/Dashboard.module.css";
+import Sidebar from "../Sidebar/Sidebar";
+// import classes from "../pages/Dashboard/Dashboard.module.css";
+import { useSelector } from "react-redux";
+import LoadingComponent from "../UI/LoadingComponent";
+import classes from "./PageContent.module.css";
 
 const PageContent = ({
   children,
@@ -10,6 +13,9 @@ const PageContent = ({
   color = "primary",
   labelCta = "Nuovo",
 }) => {
+
+  const loading = useSelector((state) => state.ui.loading);
+  
   return (
     <Box className={classes.wrapApp}>
       <Sidebar />
@@ -21,14 +27,7 @@ const PageContent = ({
           overflow: "hidden",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "2em",
-          }}
-        >
+        <Box className={classes.wrapContent}>
           <Typography variant="h4">{label}</Typography>
           {action && (
             <Button variant="contained" onClick={action} color={color}>
@@ -37,7 +36,7 @@ const PageContent = ({
           )}
         </Box>
         <Divider sx={{ marginBottom: "2em" }} />
-        {children}
+        {loading ? <LoadingComponent /> : children}
       </Box>
     </Box>
   );

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import PageContent from "../components/PageContent";
+import PageContent from "../components/PageContent/PageContent";
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Dialog from "@mui/material/Dialog";

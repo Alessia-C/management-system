@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PageContent from "../../components/PageContent";
+import PageContent from "../../components/PageContent/PageContent";
 import ReusableForm from "../../components/ReusableForm";
 import Card from "../../components/UI/Card/Card";
 import { usePost } from "../../hooks/useFetch";

@@ -11,7 +11,7 @@ import Login from "./pages/Login/Login";
 import { logout } from "./pages/Logout";
 import Employees from "./pages/Employees/Employees";
 import Settings from "./pages/Settings";
-import Projects from "./pages/Projects";
+import Projects from "./pages/Projects/Projects";
 import Clients from "./pages/Clients";
 import Reset from "./pages/Login/Reset";
 import store from "./store";

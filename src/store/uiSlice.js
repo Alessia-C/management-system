@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { notification: null },
+  initialState: { notification: null, loading: false, viewContent: "card" },
   reducers: {
     showNotification(state, action) {
       state.notification = {
@@ -11,9 +11,19 @@ const uiSlice = createSlice({
         message: action.payload.message,
       };
     },
+    startLoading(state) {
+      state.loading = true;
+    },
+    clearLoading(state) {
+      state.loading = false;
+    },
+    changeView(state, action) {
+      state.viewContent = action.payload;
+    },
   },
 });
 
-export const uiActions = uiSlice.actions;
+export const { showNotification, startLoading, clearLoading, changeView } =
+  uiSlice.actions;
 
 export default uiSlice.reducer;

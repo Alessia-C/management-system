@@ -1,5 +1,5 @@
 import React from "react";
-import PageContent from "../../components/PageContent";
+import PageContent from "../../components/PageContent/PageContent";
 import { useDeleteDataById, useGetUser } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";

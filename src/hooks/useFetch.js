@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import supabase from "../backend/supabase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearLoading, startLoading } from "../store/uiSlice";
 
 export const useFetch = (fetch, initialValue) => {
   const [isFetching, setIsFetching] = useState(false);
+  const dispatch = useDispatch()
   const [error, setError] = useState();
   const [data, setData] = useState(initialValue);
 
   useEffect(() => {
     async function getfetchData() {
-      setIsFetching(true);
+      dispatch(startLoading())
       try {
         const data = await supabase.from(fetch).select("*");
         setData(data.data);
       } catch (error) {
         setError({ message: error.message || "Failed to fetch data." });
       } finally {
-        setIsFetching(false);
+       dispatch(clearLoading())
       }
     }
 
