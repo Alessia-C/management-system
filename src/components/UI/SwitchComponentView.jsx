@@ -48,7 +48,7 @@ const SwitchComponentView = ({ columns, data, cardElement }) => {
         </Box>
       </Box>
       {mode === "card" ? (
-        <ListCard cards={data} key={"card"} cardElement={cardElement} />
+        <ListCard cards={data} key={"card"} />
       ) : (
         <TableComponent columns={columns} rows={data} key={"list"} />
       )}
