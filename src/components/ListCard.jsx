@@ -7,15 +7,15 @@ const ListCard = ({ cards, cardElement }) => {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateColumns: "repeat(4, 1fr)",
         gridTemplateRows: "max-content",
         gap: "2em",
       }}
-      style={{
-        height: "calc( 95% - 3em)",
-        overflow: "hidden",
-        overflowY: "scroll",
-      }}
+      // style={{
+      //   height: "calc( 95% - 3em)",
+      //   overflow: "hidden",
+      //   overflowY: "scroll",
+      // }}
     >
       {cards.map((item) => {
         return (
