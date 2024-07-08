@@ -4,35 +4,36 @@ import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import classes from "./CardUser.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const CardUser = ({ card, src }) => {
+const CardUser = ({ card, cardElement }) => {
   const navigate = useNavigate();
+
+  console.log(Object.keys(cardElement));
+  const element = Object.keys(cardElement);
+  const switchComponent = (type, data) => {
+    let element;
+    switch (type) {
+      case "title":
+        element = <Typography variant="h5">{data[type]}</Typography>;
+        break;
+      default:
+        element = data;
+        break;
+    }
+    return element;
+  };
+
   return (
     <Card>
       <Box className={classes.wrapCardContent}>
         <Box className={classes.introCard}>
-          <Avatar
-            // src={card.src}
-            src={src}
-            alt={card.full_name}
-            className={classes.cardAvatar}
-            sx={{ width: "150px", height: "150px" }}
-          />
-          <Typography variant="h5">{card.full_name}</Typography>
+          {/* <Typography variant="h5">{card.full_name}</Typography>
           <Chip
-            label={card.position}
+            label={`${card.position}, ${card.department}`}
             sx={{ fontWeight: "800", fontSize: "16px" }}
-          />
+          /> */}
+          {switchComponent(element, card)}
         </Box>
         <Box sx={{ width: "100%" }} className={classes.content}>
-          {/*
-            <Box>
-              {card.idProject && (
-                <>
-                  <Typography variant="body1">Un progetto attivo: </Typography>
-                  <Link to={`#/${card.idProject}`}>Vai al progetto</Link>
-                </>
-              )}
-            </Box> */}
           <Box className={classes.wrapCta}>
             <Button
               variant="contained"
