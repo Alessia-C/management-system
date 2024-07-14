@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./Card.module.css";
 
 const Card = ({ children, bg = "#fff", color = "#000000de", style = '' }) => {
+
   return (
     <Box
       component="div"

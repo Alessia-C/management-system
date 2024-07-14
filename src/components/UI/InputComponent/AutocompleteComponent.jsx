@@ -1,21 +1,24 @@
 import { Autocomplete, TextField } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 
 const AutocompleteComponent = ({ element, formik }) => {
-  const noOptions = [{ label: "Opzioni non disponibili", value: '0' }];
+  const noOptions = [{ label: "Opzioni non disponibili", value: "0" }];
+  
   return (
     <Autocomplete
       key={element.name}
       disablePortal
       name={element.name}
       id={`${element.name}-autocomplete`}
-      value={formik.values[element.name] || null}
+      value={element.options.find(
+        (option) => option.value === formik.values[element.name]
+      )}
       onChange={(event, newValue) => {
-        formik.setFieldValue(element.name, newValue);
+        formik.setFieldValue(element.name, newValue ? newValue.value : "");
       }}
       options={element.options ? element.options : noOptions}
+      isOptionEqualToValue={(option, value) => option.value === value?.value}
       getOptionLabel={(option) => option.label}
-      isOptionEqualToValue={(option, value) => option.value === value.value}
       renderInput={(params) => (
         <TextField
           {...params}

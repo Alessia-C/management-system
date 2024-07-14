@@ -8,3 +8,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.wrapCard.cardForm {
+  justify-content: flex-start;
+}

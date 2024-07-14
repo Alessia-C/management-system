@@ -2,8 +2,8 @@
 const positions = [
   { value: "manager", label: "Manager" },
   { value: "frontEndDeveloper", label: "Front-End Developer" },
-  { value: "BackEndDeveloper", label: "Back-End Developer" },
-  { value: "FullStackDeveloper", label: "Full-Stack Developer" },
+  { value: "backEndDeveloper", label: "Back-End Developer" },
+  { value: "fullStackDeveloper", label: "Full-Stack Developer" },
   { value: "uiDesigner", label: "UI Designer" },
   { value: "uxDesigner", label: "UX Designer" },
   { value: "analyst", label: "Business Analyst" },
@@ -19,6 +19,7 @@ export const departments = [
   { value: "marketing", label: "Marketing" },
   { value: "finance", label: "Finance" },
   { value: "operations", label: "Operations" },
+  { value: "IT", label: "IT" },
 ];
 
 export const seniorityLevels = [

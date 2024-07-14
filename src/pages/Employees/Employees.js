@@ -1,11 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import PageContent from "../../components/PageContent/PageContent";
-import TableComponent from "../../components/TableComponent";
 import { useFetch } from "../../hooks/useFetch";
-import ListCard from "../../components/ListCard";
 import SwitchComponentView from "../../components/UI/SwitchComponentView";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const Employees = () => {
   const { data } = useFetch("employees", []);
@@ -68,12 +65,16 @@ const Employees = () => {
     title: "full_name",
     chip_label: "position",
     chip_info: "department",
-    detail: "detailemployee"
-  }
+    detail: "detailemployee",
+  };
 
   return (
     <PageContent label="Dipendenti" action={newEmployeeHandler}>
-      <SwitchComponentView data={data} columns={columns} cardElement={cardElement} />
+      <SwitchComponentView
+        data={data}
+        columns={columns}
+        cardElement={cardElement}
+      />
     </PageContent>
   );
 };

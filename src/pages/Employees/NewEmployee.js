@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import PageContent from "../../components/PageContent/PageContent";
-import ReusableForm from "../../components/ReusableForm";
-import Card from "../../components/UI/Card/Card";
 import { usePost } from "../../hooks/useFetch";
 import dayjs from "dayjs";
 import { employeesFields } from "../../utils/employeesInfo";
@@ -11,7 +9,7 @@ import { setInitialValues } from "../../store/formSlice";
 
 const NewEmployee = () => {
   const dispatch = useDispatch();
-  const { isFetching, data, postData } = usePost(null);
+  const {  postData } = usePost(null);
 
   const handleSubmit = async (values) => {
     const newValues = { ...values };

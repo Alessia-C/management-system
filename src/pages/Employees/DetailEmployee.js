@@ -2,13 +2,16 @@ import React from "react";
 import PageContent from "../../components/PageContent/PageContent";
 import { useDeleteDataById, useGetUser } from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import Card from "../../components/UI/Card/Card";
 import { employeesFields } from "../../utils/employeesInfo";
+import TabsComponent from "../../components/UI/TabsComponent/TabsComponent";
+import { useSelector } from "react-redux";
+import LoadingComponent from "../../components/UI/LoadingComponent";
 
 const DetailEmployee = () => {
   const params = useParams();
-  const { isFetching, data } = useGetUser("employees", {}, params.id);
+  const loading = useSelector((state) => state.ui.loading);
+
+  const { data } = useGetUser("employees", {}, params.id);
   const { deleteById } = useDeleteDataById();
 
   const handleDelete = async () => {
@@ -17,36 +20,15 @@ const DetailEmployee = () => {
 
   return (
     <PageContent
-      label={`Dettaglio ${data.full_name}`}
+      label={`Dettaglio ${data?.full_name || ""}`}
       labelCta="Elimina"
       color="error"
       action={handleDelete}
     >
-      {isFetching ? (
-        <Typography variant="h5">Loading...</Typography>
+      {loading ? (
+        <LoadingComponent />
       ) : (
-        <Box
-          sx={{
-            display: "grid",
-            gap: "1.5em",
-            //   gridTemplateColumns: "repeat(2, 1fr)",
-          }}
-        >
-          {employeesFields.map((item) => {
-            return (
-              <Card>
-                <Typography variant="h6">{item.label}</Typography>
-                {item.fields.map((field) => {
-                  return (
-                    <Typography variant="body1">
-                      {field.label}: <strong>{data[field.name]}</strong>
-                    </Typography>
-                  );
-                })}
-              </Card>
-            );
-          })}
-        </Box>
+        <TabsComponent tabs={employeesFields} />
       )}
     </PageContent>
   );
