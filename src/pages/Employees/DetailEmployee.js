@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { employeesFields } from "../../utils/employeesInfo";
 import TabsComponent from "../../components/UI/TabsComponent/TabsComponent";
 import { useSelector } from "react-redux";
-import LoadingComponent from "../../components/UI/LoadingComponent";
+import LoadingComponent from "../../components/UI/LoadingComponent/LoadingComponent";
 
 const DetailEmployee = () => {
   const params = useParams();
@@ -28,7 +28,7 @@ const DetailEmployee = () => {
       {loading ? (
         <LoadingComponent />
       ) : (
-        <TabsComponent tabs={employeesFields} />
+        <TabsComponent tabs={employeesFields} cssclass="detailsCard" />
       )}
     </PageContent>
   );
