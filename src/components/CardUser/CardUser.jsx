@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../UI/Card/Card";
 import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
 import classes from "./CardUser.module.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CardUser = ({ card, cardElement }) => {
   const navigate = useNavigate();

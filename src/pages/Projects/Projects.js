@@ -1,8 +1,7 @@
 import dayjs from "dayjs";
 import React, { useMemo } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import PageContent from "../../components/PageContent/PageContent";
-import TableComponent from "../../components/TableComponent";
+import PageContent from "../../components/PageContent/PageContent"
 import SwitchComponentView from "../../components/UI/SwitchComponentView";
 
 
@@ -72,7 +71,7 @@ const Projects = () => {
       },
       
     ],
-    [data]
+    []
   );
 
   return (

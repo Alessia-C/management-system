@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import React, { useMemo } from "react";
+import React from "react";
 
 const AutocompleteComponent = ({ element, formik }) => {
   const noOptions = [{ label: "Opzioni non disponibili", value: "0" }];

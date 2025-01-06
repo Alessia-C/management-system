@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AuthPageContent from "../../components/AuthPage/AuthPageContent";
 import ReusableForm from "../../components/ReusableForm";
-import { useLocation } from "react-router-dom";
 import { Typography } from "@mui/material";
 import supabase from "../../backend/supabase";
 

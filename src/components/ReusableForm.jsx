@@ -1,12 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Box, Button } from "@mui/material";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import classes from "./FormComponent/Form.module.css";
 import { renderInput } from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
-import { clearLoading, startLoading } from "../store/uiSlice";
-import LoadingComponent from "./UI/LoadingComponent";
 
 const ReusableForm = ({
   fields,
