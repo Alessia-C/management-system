@@ -1,10 +1,13 @@
 import React from "react";
 import Card from "../UI/Card/Card";
-import { Avatar, Box, Button, Chip, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import classes from "./CardUser.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ContentEmplyeesCard, IntroEmplyeesCard } from "../CardsContent/EmplyeesCard";
+import { ContentProjectsCard, IntroProjectsCard } from "../CardsContent/ProjectsCard";
+import { ContentClientsCard, IntroClientsCard } from "../CardsContent/ClientsCard";
 
-const CardUser = ({ card, cardElement }) => {
+const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,76 +17,18 @@ const CardUser = ({ card, cardElement }) => {
 
   switch (location.pathname) {
     case "/employees":
-      intro = (
-        <>
-          <Avatar
-            alt={card.full_name}
-            src="/static/images/avatar/1.jpg"
-            sx={{ margin: "0 auto", width: "100px", height: "100px" }}
-          />
-          <Typography variant="h5">{card.full_name}</Typography>
-          <Chip
-            label={`${card.position}, ${card.department}`}
-            sx={{ fontWeight: "800", fontSize: "16px" }}
-          />
-        </>
-      );
-      content = (
-        <>
-          <Typography variant="body1">
-            Numero Di Telefono: <strong>{card.phone_number}</strong>
-          </Typography>
-          <Typography variant="body1">
-            Email: <strong>{card.email}</strong>
-          </Typography>
-        </>
-      );
+      intro = <IntroEmplyeesCard data={card} />;
+      content = <ContentEmplyeesCard data={card} />;
       path = "detailemployee";
       break;
     case "/projects":
-      intro = (
-        <>
-          <Typography variant="h5">{card.project_name}</Typography>
-          <Chip
-            label={card.project_type}
-            sx={{ fontWeight: "800", fontSize: "16px" }}
-          />
-        </>
-      );
-      content = (
-        <>
-          <Typography variant="body2" sx={{ textTransform: "uppercase" }}>
-            Descrizione
-          </Typography>
-          <Typography variant="body1">{card.description}</Typography>
-          <Box sx={{ marginTop: "1em" }}>
-            <Typography variant="body2" sx={{ textTransform: "uppercase" }}>
-              Status
-            </Typography>
-            <Typography variant="body1">{card.status}</Typography>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "1em",
-            }}
-          >
-            <Box>
-              <Typography variant="body2" sx={{ textTransform: "uppercase" }}>
-                Data Di Inizio
-              </Typography>
-              <Typography variant="body1">{card.start_date}</Typography>
-            </Box>
-            <Box>
-              <Typography variant="body2" sx={{ textTransform: "uppercase" }}>
-                Data Di Fine
-              </Typography>
-              <Typography variant="body1">{card.end_date}</Typography>
-            </Box>
-          </Box>
-        </>
-      );
+      intro = <IntroProjectsCard data={card} />;
+      content = <ContentProjectsCard data={card} />;
+      path = "detailproject";
+      break;
+    case "/clients":
+      intro = <IntroClientsCard data={card} />;
+      content = <ContentClientsCard data={card} />;
       path = "detailproject";
       break;
     default:
@@ -92,7 +37,7 @@ const CardUser = ({ card, cardElement }) => {
 
   return (
     <Box sx={{ minHeight: "100%" }}>
-      <Card style="wrapCardContent">
+      <Card style={cssClass}>
         <Box className={classes.introCard}>{intro}</Box>
         <Box sx={{ margin: "2em 0" }}>{content}</Box>
         <Box sx={{ width: "100%" }} className={classes.content}>

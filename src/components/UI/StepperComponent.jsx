@@ -31,7 +31,6 @@ export default function StepperComponent({ steps, onSubmit, length = 2, classCss
     setCompleted({});
   };
 
-  console.log();
   return (
     <Card style={classCss}>
       <Stepper nonLinear activeStep={activeStep}>

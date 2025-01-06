@@ -18,6 +18,7 @@ import store from "./store";
 import OutletPage from "./components/OutletPage";
 import NewEmployee from "./pages/Employees/NewEmployee";
 import DetailEmployee from "./pages/Employees/DetailEmployee";
+import DetailProject from "./pages/Projects/DetailProject";
 
 function App() {
   const router = createBrowserRouter([
@@ -90,7 +91,7 @@ function App() {
             },
             {
               path: "detailproject/:id",
-              element: <DetailEmployee />,
+              element: <DetailProject />,
             },
           ],
         },

@@ -57,7 +57,7 @@ export const workingHours = [
   { value: "shifts", label: "Turni" },
 ];
 
-const workLocations = [
+export const workLocations = [
   { value: "office", label: "Ufficio" },
   { value: "remote", label: "Lavoro da remoto" },
   { value: "client_site", label: "Presso il cliente" },

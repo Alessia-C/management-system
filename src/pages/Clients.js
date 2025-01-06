@@ -50,9 +50,11 @@ function DeleteUserActionItem({ deleteUser, ...props }) {
 }
 
 const Clients = () => {
-  const { isFetching, data } = useFetch("clients", []);
+  const { data } = useFetch("clients", []);
   const navigate = useNavigate();
 
+  console.log(data);
+  
   const deleteUser = (client) => {
     console.log(client);
   };
