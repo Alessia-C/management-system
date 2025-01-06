@@ -42,7 +42,21 @@ function App() {
         },
         {
           path: "clients",
-          element: <Clients />,
+          element: <OutletPage />,
+          children: [
+            {
+              index: true,
+              element: <Clients />,
+            },
+            {
+              path: "newclient",
+              element: <NewEmployee />,
+            },
+            {
+              path: "detailclient/:id",
+              element: <DetailEmployee />,
+            },
+          ],
         },
         {
           path: "employees",
@@ -64,7 +78,21 @@ function App() {
         },
         {
           path: "projects",
-          element: <Projects />,
+          element: <OutletPage />,
+          children: [
+            {
+              index: true,
+              element: <Projects />,
+            },
+            {
+              path: "newproject",
+              element: <NewEmployee />,
+            },
+            {
+              path: "detailproject/:id",
+              element: <DetailEmployee />,
+            },
+          ],
         },
         {
           path: "settings",
