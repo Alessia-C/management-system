@@ -8,9 +8,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
-import TableComponent from "../components/TableComponent";
 import dayjs from "dayjs";
 import { useFetch } from "../hooks/useFetch";
+import SwitchComponentView from "../components/UI/SwitchComponentView";
+import { useNavigate } from "react-router-dom";
 
 function DeleteUserActionItem({ deleteUser, ...props }) {
   const [open, setOpen] = useState(false);
@@ -50,9 +51,14 @@ function DeleteUserActionItem({ deleteUser, ...props }) {
 
 const Clients = () => {
   const { isFetching, data } = useFetch("clients", []);
+  const navigate = useNavigate();
 
   const deleteUser = (client) => {
     console.log(client);
+  };
+
+  const newClientHandler = () => {
+    navigate("newclient");
   };
 
   const columns = useMemo(
@@ -78,12 +84,6 @@ const Clients = () => {
         filterable: false,
         resizable: false,
         flex: 1,
-        // renderCell: (params) => (
-        //   <Box>
-        //     <Typography>{params.row.company}</Typography>
-        //     <Typography>{params.row.name}</Typography>
-        //   </Box>
-        // ),
       },
       {
         field: "phone",
@@ -151,12 +151,23 @@ const Clients = () => {
         ],
       },
     ],
-    [data]
+    []
   );
 
+  const cardElement = {
+    title: "company",
+    chip_label: "name",
+    chip_info: "company",
+    detail: "company",
+  };
+
   return (
-    <PageContent label="Clienti">
-      <TableComponent columns={columns} rows={data} loading={isFetching} />
+    <PageContent label="Clienti" action={newClientHandler}>
+      <SwitchComponentView
+        data={data}
+        columns={columns}
+        cardElement={cardElement}
+      />
     </PageContent>
   );
 };

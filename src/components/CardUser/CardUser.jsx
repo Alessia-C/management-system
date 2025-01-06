@@ -84,7 +84,7 @@ const CardUser = ({ card, cardElement }) => {
           </Box>
         </>
       );
-      path = "detailprojects";
+      path = "detailproject";
       break;
     default:
       intro = "Componente non trovato";

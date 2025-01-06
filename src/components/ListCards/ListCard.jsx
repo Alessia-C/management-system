@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import CardUser from "../CardUser/CardUser";
+import ContainerUser from "../CardUser/CardUser";
 import classes from './ListCard.module.css'
 
 const ListCard = ({ cards, cardElement }) => {
@@ -8,7 +8,7 @@ const ListCard = ({ cards, cardElement }) => {
     <Box className={classes.wrapCards}>
       {cards.map((item) => {
         return (
-          <CardUser
+          <ContainerUser
             card={item}
             key={item.id}
             cardElement={cardElement}

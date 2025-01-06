@@ -6,7 +6,7 @@ import { clearLoading, startLoading } from "../store/uiSlice";
 import { setInitialValues } from "../store/formSlice";
 
 export const useFetch = (fetch, initialValue) => {
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching] = useState(false);
   const dispatch = useDispatch();
   const [error, setError] = useState();
   const [data, setData] = useState(initialValue);
@@ -25,7 +25,7 @@ export const useFetch = (fetch, initialValue) => {
     }
 
     getfetchData();
-  }, [fetch]);
+  }, [dispatch, fetch]);
 
   return { isFetching, error, data };
 };
@@ -54,7 +54,7 @@ export const useGetUser = (fetch, initialValue, id) => {
     }
 
     getfetchData();
-  }, [fetch, id]);
+  }, [dispatch, fetch, id]);
 
   return { isFetching, error, data };
 };
