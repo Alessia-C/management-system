@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { notification: null, loading: false, viewContent: "card" },
+  initialState: { notification: null, loading: false, viewContent: localStorage.getItem("switchViewStracture") || "card" },
   reducers: {
     showNotification(state, action) {
       state.notification = {
@@ -19,6 +19,7 @@ const uiSlice = createSlice({
     },
     changeView(state, action) {
       state.viewContent = action.payload;
+      localStorage.setItem("switchViewStracture", JSON.stringify(action.payload))
     },
   },
 });
