@@ -1,22 +1,11 @@
 import { Box } from "@mui/material";
 import React from "react";
-import CardUser from "./CardUser/CardUser";
+import CardUser from "../CardUser/CardUser";
+import classes from './ListCard.module.css'
 
 const ListCard = ({ cards, cardElement }) => {
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gridTemplateRows: "max-content",
-        gap: "2em",
-      }}
-      // style={{
-      //   height: "calc( 95% - 3em)",
-      //   overflow: "hidden",
-      //   overflowY: "scroll",
-      // }}
-    >
+    <Box className={classes.wrapCards}>
       {cards.map((item) => {
         return (
           <CardUser
