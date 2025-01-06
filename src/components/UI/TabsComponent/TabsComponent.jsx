@@ -35,7 +35,7 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function TabsComponent({ tabs }) {
+export default function TabsComponent({ tabs, cssclass = 'cardForm' }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -43,7 +43,7 @@ export default function TabsComponent({ tabs }) {
   };
 
   return (
-    <Card style="cardForm">
+    <Card style={cssclass}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
