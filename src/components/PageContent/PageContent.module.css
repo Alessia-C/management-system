@@ -1,0 +1,14 @@
+.wrapApp {
+  height: 100vh;
+  background: #d7d5d5;
+  display: flex;
+  gap: var(--space);
+  padding: var(--space);
+}
+
+.wrapContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space);
+}

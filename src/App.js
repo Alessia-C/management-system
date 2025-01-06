@@ -5,18 +5,19 @@ import { ThemeProvider } from "@mui/material";
 import { Provider } from "react-redux";
 import RootPage from "./pages/Root";
 import ErrorPage from "./pages/Error";
-import { tokenLoader } from "./unit/auth";
+import { tokenLoader } from "./utils/auth";
 import DashboardPage from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import { logout } from "./pages/Logout";
 import Employees from "./pages/Employees/Employees";
 import Settings from "./pages/Settings";
-import Projects from "./pages/Projects";
+import Projects from "./pages/Projects/Projects";
 import Clients from "./pages/Clients";
 import Reset from "./pages/Login/Reset";
 import store from "./store";
 import OutletPage from "./components/OutletPage";
 import NewEmployee from "./pages/Employees/NewEmployee";
+import DetailEmployee from "./pages/Employees/DetailEmployee";
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +55,10 @@ function App() {
             {
               path: "newemployee",
               element: <NewEmployee />,
+            },
+            {
+              path: "detailemployee/:id",
+              element: <DetailEmployee />,
             },
           ],
         },

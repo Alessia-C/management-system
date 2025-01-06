@@ -1,86 +1,55 @@
-import React from "react";
-import PageContent from "../../components/PageContent";
-import ReusableForm from "../../components/ReusableForm";
-import Card from "../../components/UI/Card/Card";
+import React, { useEffect } from "react";
+import PageContent from "../../components/PageContent/PageContent";
 import { usePost } from "../../hooks/useFetch";
 import dayjs from "dayjs";
-
-const fields = [
-  {
-    label: "Nome",
-    name: "name",
-    type: "text",
-    value: "name",
-    required: true,
-  },
-  {
-    label: "Email",
-    name: "email",
-    type: "email",
-    value: "email",
-    required: true,
-  },
-  {
-    label: "Numero Di Telefono",
-    name: "phone",
-    type: "text",
-    value: "phone",
-    required: true,
-  },
-  {
-    label: "Data Di Inizio",
-    name: "startDate",
-    type: "date",
-    value: "startDate",
-    required: true,
-  },
-  {
-    label: "Ral",
-    name: "salary",
-    type: "text",
-    value: "salary",
-    required: true,
-  },
-  {
-    label: "Position",
-    name: "position",
-    type: "text",
-    value: "position",
-    required: true,
-  },
-  {
-    label: "Settore",
-    name: "department",
-    type: "text",
-    value: "department",
-    required: true,
-  },
-  {
-    label: "Seniority",
-    name: "seniority",
-    type: "text",
-    value: "seniority",
-    required: true,
-  },
-];
+import { employeesFields } from "../../utils/employeesInfo";
+import StepperComponent from "../../components/UI/StepperComponent";
+import { useDispatch } from "react-redux";
+import { setInitialValues } from "../../store/formSlice";
 
 const NewEmployee = () => {
-  const { isFetching, data, postData } = usePost(null);
+  const dispatch = useDispatch();
+  const {  postData } = usePost(null);
+
   const handleSubmit = async (values) => {
-    const newValues = {...values}
-    newValues.startDate = dayjs(newValues.startDate).format('YYYY-MM-DD')
+    const newValues = { ...values };
+    newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
+    newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
+    newValues.department = newValues.department.value;
+    newValues.position = newValues.position.value;
+    newValues.seniority_level = newValues.seniority_level.value;
+    console.log(newValues);
     await postData("employees", [newValues]);
   };
 
+  useEffect(() => {
+    const initialValues = {
+      full_name: "",
+      date_of_birth: null,
+      fiscal_code: "",
+      address: "",
+      phone_number: "",
+      email: "",
+      start_date: null,
+      position: "",
+      department: "",
+      seniority_level: "",
+      salary: "",
+      contract_type: "",
+      probation_period: "",
+      working_hours: "",
+      work_location: "",
+    };
+
+    dispatch(setInitialValues(initialValues))
+  }, [dispatch]);
+
   return (
     <PageContent label="Nuovo Dipendente">
-      <Card>
-        <ReusableForm
-          fields={fields}
-          labelCta="Salva"
-          onSubmit={handleSubmit}
-        />
-      </Card>
+      <StepperComponent
+        steps={employeesFields}
+        onSubmit={handleSubmit}
+      />
     </PageContent>
   );
 };

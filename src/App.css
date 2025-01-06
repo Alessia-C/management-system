@@ -1,3 +1,7 @@
+:root{
+  --space: 2em;
+}
+
 ::-webkit-scrollbar{
   display: none;
 }

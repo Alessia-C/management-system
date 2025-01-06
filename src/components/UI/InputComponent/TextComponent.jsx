@@ -1,34 +1,31 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-const TextComponent = ({ formik, element, onChange }) => {
+const TextComponent = ({ formik, element }) => {
+  const initialValue = formik.values[element.name] || ""; // Ensure a default value if undefined
   return (
     <TextField
       name={element.name}
       label={element.label}
       type={element.type}
-      value={formik.values[element.name] || ''}
+      value={initialValue} // Ensure a default value here as well
       onChange={formik.handleChange}
       color={
-        formik.touched[element] || formik.errors[element] ? "error" : "primary"
+        formik.touched[element.name] && formik.errors[element.name]
+          ? "error"
+          : "primary"
       }
       required={element.required ? element.required : false}
-      helperText={formik.touched[element] ? formik.errors[element] : ""}
-      autoComplete={element.value}
+      helperText={
+        formik.touched[element.name] && formik.errors[element.name]
+          ? formik.errors[element.name]
+          : ""
+      }
+      autoComplete={element.name}
       fullWidth
-      {...formik.getFieldProps(element.value)}
+      {...formik.getFieldProps(element.name)}
     />
   );
 };
 
-// fullWidth
-//               name={field.name}
-//               label={field.label}
-//               value={formik.values[field.name]}
-//               onChange={handleChange}
-//               color={formik.touched[field.name] && formik.errors[field.name] ? "error" : "primary"}
-//               required={field.required || false}
-//               helperText={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : ""}
-//               autoComplete={field.value}
-//               {...formik.getFieldProps(field.name)}
 export default TextComponent;

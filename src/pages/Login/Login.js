@@ -57,6 +57,7 @@ const Login = () => {
     <AuthPageContent intro={introAuthForm}>
       <ReusableForm
         fields={fields}
+        login={true}
         labelCta="Accedi"
         onSubmit={handleSubmit}
         style="authForm"

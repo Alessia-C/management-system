@@ -1,11 +1,13 @@
 import dayjs from "dayjs";
 import React, { useMemo } from "react";
-import {useFetch} from "../hooks/useFetch";
-import PageContent from "../components/PageContent";
-import TableComponent from "../components/TableComponent";
+import { useFetch } from "../../hooks/useFetch";
+import PageContent from "../../components/PageContent/PageContent";
+import TableComponent from "../../components/TableComponent";
+import SwitchComponentView from "../../components/UI/SwitchComponentView";
+
 
 const Projects = () => {
-  const { isFetching, error, data } = useFetch("projects", []);
+  const {  data } = useFetch("projects", []);
 
   const columns = useMemo(
     () => [
@@ -18,7 +20,7 @@ const Projects = () => {
         hide: true,
       },
       {
-        field: "name",
+        field: "project_name",
         headerName: "Nome Progetto",
         filterable: false,
         resizable: false,
@@ -32,8 +34,8 @@ const Projects = () => {
         flex: 1,
       },
       {
-        field: "manager",
-        headerName: "Manager",
+        field: "project_type",
+        headerName: "Tipo Progetto",
         filterable: false,
         resizable: false,
         flex: 1,
@@ -55,27 +57,27 @@ const Projects = () => {
         valueFormatter: (value) => dayjs(value).format("DD/MM/YYYY"),
       },
       {
+        field: "status",
+        headerName: "Status",
+        filterable: false,
+        resizable: false,
+        flex: 1,
+      },
+      {
         field: "budget",
         headerName: "Budget",
         filterable: false,
         resizable: false,
         flex: 1,
       },
-      {
-        field: "teamMembers",
-        headerName: "Team",
-        filterable: false,
-        resizable: false,
-        flex: 1,
-        valueFormatter: (value) => value.length > 0 ? value.length : '0',
-      },
+      
     ],
     [data]
   );
 
   return (
     <PageContent label="Progetti">
-      <TableComponent columns={columns} rows={data} loading={isFetching} />
+      <SwitchComponentView data={data} columns={columns} />
     </PageContent>
   );
 };
