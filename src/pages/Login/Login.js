@@ -2,7 +2,7 @@ import React from "react";
 import AuthPageContent from "../../components/AuthPage/AuthPageContent";
 import ReusableForm from "../../components/ReusableForm";
 import { useNavigate } from "react-router-dom";
-import supabase from "../../backend/supabase";
+import supabase from "../../../backend/supabase";
 
 const introAuthForm = {
   title: "login",
@@ -32,26 +32,43 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: values.email,
-        password: values.password,
+      // Esegui la richiesta al tuo server Express per effettuare il login
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
       });
-      if (error) {
-        throw error;
+  
+      if (!response.ok) {
+        throw new Error("Credenziali non valide");
       }
-
-      console.log("Dati ottenuti:", data);
-      const token = data.session.access_token;
+  
+      // Se il login ha successo, ottieni il token JWT dalla risposta
+      const data = await response.json();
+      const token = data.token;
+  
+      // Salva il token JWT nel localStorage
       localStorage.setItem("token", token);
+  
+      // Imposta la scadenza del token (ad esempio 1 ora)
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 1);
       localStorage.setItem("expiration", expiration.toISOString());
-
-      return navigate("/");
+  
+      // Naviga alla homepage o alla pagina protetta
+      navigate("/");
+  
     } catch (error) {
       console.error("Errore durante il login:", error);
+      // Gestisci l'errore in modo appropriato (ad esempio, mostra un messaggio di errore)
     }
   };
+  
 
   return (
     <AuthPageContent intro={introAuthForm}>
