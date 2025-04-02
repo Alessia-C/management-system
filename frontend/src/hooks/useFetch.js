@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import supabase from "../backend/supabase";
+// import supabase from "../backend/supabase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearLoading, startLoading } from "../store/uiSlice";
 import { setInitialValues } from "../store/formSlice";
 
-export const useFetch = (fetch, initialValue) => {
+export const useFetch = (endpoint, initialValue) => {
   const [isFetching] = useState(false);
   const dispatch = useDispatch();
   const [error, setError] = useState();
@@ -14,10 +14,26 @@ export const useFetch = (fetch, initialValue) => {
   useEffect(() => {
     async function getfetchData() {
       dispatch(startLoading());
+
       try {
-        const data = await supabase.from(fetch).select("*");
-        setData(data.data);
+        const response = await fetch(`http://localhost:4000/${endpoint}`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Errore nel recupero dei dati");
+        }
+
+        const data = await response.json();
+        setData(data);
       } catch (error) {
+        console.error(error.message);
         setError({ message: error.message || "Failed to fetch data." });
       } finally {
         dispatch(clearLoading());
@@ -25,12 +41,12 @@ export const useFetch = (fetch, initialValue) => {
     }
 
     getfetchData();
-  }, [dispatch, fetch]);
+  }, [dispatch, endpoint]);
 
   return { isFetching, error, data };
 };
 
-export const useGetUser = (fetch, initialValue, id) => {
+export const useGetUser = (endpoint, initialValue, id) => {
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState();
@@ -39,13 +55,22 @@ export const useGetUser = (fetch, initialValue, id) => {
   useEffect(() => {
     async function getfetchData() {
       try {
-        const data = await supabase
-          .from(fetch)
-          .select("*")
-          .eq("id", id)
-          .single();
-        setData(data.data);
-        dispatch(setInitialValues(data.data));
+        const response = await fetch(`http://localhost:4000/${endpoint}/${id}`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Errore nel recupero dei dati");
+        }
+
+        const data = await response.json();
+        setData(data);
+        dispatch(setInitialValues(data));
       } catch (error) {
         setError({ message: error.message || "Failed to fetch data." });
       } finally {
@@ -54,7 +79,7 @@ export const useGetUser = (fetch, initialValue, id) => {
     }
 
     getfetchData();
-  }, [dispatch, fetch, id]);
+  }, [dispatch, endpoint, id]);
 
   return { isFetching, error, data };
 };
@@ -64,15 +89,19 @@ export const usePost = (initialValues) => {
   const [error, setError] = useState();
   const [data, setData] = useState(initialValues);
 
-  const postData = async (fetch, payload) => {
+  const postData = async (endpoint, payload) => {
     setIsFetching(true);
     try {
-      const { data, error } = await supabase
-        .from(fetch)
-        .insert(payload)
-        .select();
-      if (error) throw error;
-      setData(data);
+      const response = await fetch(`http://localhost:4000/new${endpoint}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const newData = await response.json();
+    setData(newData);
     } catch (err) {
       setError({ message: err.message || "Failed to post data." });
     } finally {
@@ -89,24 +118,24 @@ export const useDeleteDataById = () => {
   const [success, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const deleteById = async (fetch, id) => {
+  const deleteById = async (endpoint, id) => {
     try {
       setIsFetching(true);
-      const { error } = await supabase
-        .from(fetch) // Replace 'users' with the name of your user table if different
-        .delete()
-        .eq("id", id);
+      const response = await fetch(`http://localhost:4000/${endpoint}/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
 
-      if (error) {
-        console.error("Error deleting user from users table:", error);
-        setError(error);
-        setIsSuccess(false);
-        return;
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Errore nella cancellazione");
       }
-
       setIsSuccess(true);
       setError(null);
       navigate(-1);
+      
     } catch (err) {
       console.error("Error during deletion:", err);
       setError(err);

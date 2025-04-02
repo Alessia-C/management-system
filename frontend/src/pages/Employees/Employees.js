@@ -58,7 +58,7 @@ const Employees = () => {
   );
 
   const newEmployeeHandler = () => {
-    navigate("newemployee");
+    navigate("newemployees");
   };
 
   const cardElement = {

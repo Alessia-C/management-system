@@ -1,63 +1,28 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
-require('dotenv').config();
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const db = require("../config/db");
+require("dotenv").config();
 
 const router = express.Router();
 
-// Registrazione utente
-router.post('/register', async (req, res) => {
-  try {
-    const { email, password } = req.body;
+// Funzione per generare un token JWT
+const generateToken = (user) => {
+  return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
+};
 
-    // Crea un nuovo utente nel database
-    const newUser = await User.create({ email, password });
+// Login
+router.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) return res.status(400).json({ message: "Email e password sono obbligatorie" });
 
-    res.status(201).json({
-      message: 'Utente creato con successo',
-      user: {
-        id: newUser.id,
-        email: newUser.email,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Errore nella registrazione' });
-  }
-});
-
-// Login utente (restituisce il token JWT)
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Trova l'utente nel database
-    const user = await User.findOne({ where: { email } });
-
-    if (!user) {
-      return res.status(401).json({ message: 'Credenziali non valide' });
+  db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
+    if (err) return res.status(500).json({ message: "Errore nel database" });
+    if (results.length === 0 || results[0].password !== password) {
+      return res.status(401).json({ message: "Credenziali errate" });
     }
-
-    // Verifica la password
-    const isPasswordValid = await user.checkPassword(password);
-
-    if (!isPasswordValid) {
-      return res.status(401).json({ message: 'Credenziali non valide' });
-    }
-
-    // Genera un token JWT
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' } // Token scade dopo un'ora
-    );
-
-    res.status(200).json({ message: 'Login effettuato con successo', token });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Errore nel login' });
-  }
+    const token = generateToken(results[0]);
+    res.json({ token });
+  });
 });
 
 module.exports = router;

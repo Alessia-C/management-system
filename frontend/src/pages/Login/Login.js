@@ -2,7 +2,6 @@ import React from "react";
 import AuthPageContent from "../../components/AuthPage/AuthPageContent";
 import ReusableForm from "../../components/ReusableForm";
 import { useNavigate } from "react-router-dom";
-import supabase from "../../../../backend/supabase";
 
 const introAuthForm = {
   title: "login",
@@ -33,7 +32,7 @@ const Login = () => {
   const handleSubmit = async (values) => {
     try {
       // Esegui la richiesta al tuo server Express per effettuare il login
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch("http://localhost:4000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

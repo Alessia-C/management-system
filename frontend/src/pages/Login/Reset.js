@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AuthPageContent from "../../components/AuthPage/AuthPageContent";
 import ReusableForm from "../../components/ReusableForm";
 import { Typography } from "@mui/material";
-import supabase from "../../backend/supabase";
+// import supabase from "../../backend/supabase";
 
 const introAuthForm = {
   title: "Recupera Password",
@@ -39,17 +39,17 @@ const Reset = (values) => {
   // const token = new URLSearchParams(location.search).get("access_token");
 
   const handleSubmit = async () => {
-    const { data, error } = await supabase.auth.updateUser({
-      email: values.email,
-      password: values.password,
-    });
+    // const { data, error } = await supabase.auth.updateUser({
+    //   email: values.email,
+    //   password: values.password,
+    // });
 
-    console.log(data);
-    if (error) {
-      setMessage("Error resetting password: " + error.message);
-    } else {
-      setMessage("Password reset successfully");
-    }
+    // console.log(data);
+    // if (error) {
+    //   setMessage("Error resetting password: " + error.message);
+    // } else {
+    //   setMessage("Password reset successfully");
+    // }
   };
   // async function sendPasswordResetEmail(email) {
   //   const { error } = await supabase.auth.api.resetPasswordForEmail(email, {

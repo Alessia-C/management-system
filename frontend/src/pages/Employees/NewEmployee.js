@@ -15,11 +15,12 @@ const NewEmployee = () => {
     const newValues = { ...values };
     newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
     newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
-    newValues.department = newValues.department.value;
-    newValues.position = newValues.position.value;
-    newValues.seniority_level = newValues.seniority_level.value;
-    console.log(newValues);
-    await postData("employees", [newValues]);
+    newValues.salary = parseInt(newValues.salary);
+    newValues.department = newValues.department.value|| "indefinite_term";
+    newValues.position = newValues.position.value || "Software Engineer"; 
+    newValues.seniority_level = newValues.seniority_level.value || "Mid"; 
+    console.log(values, newValues);
+    await postData("employee", newValues);
   };
 
   useEffect(() => {
