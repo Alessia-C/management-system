@@ -32,7 +32,7 @@ const Login = () => {
   const handleSubmit = async (values) => {
     try {
       // Esegui la richiesta al tuo server Express per effettuare il login
-      const response = await fetch("http://localhost:4000/login", {
+      const response = await fetch("http://localhost:4000/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

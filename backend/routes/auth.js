@@ -11,7 +11,7 @@ const generateToken = (user) => {
 };
 
 // Login
-router.post("/login", (req, res) => {
+router.post("/", (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ message: "Email e password sono obbligatorie" });
 

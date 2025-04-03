@@ -10,13 +10,14 @@ app.use(express.json());
 
 // Importa le route
 const employeeRoutes = require("./routes/employees");
-// const clientsRoutes = require("./routes/clients");
+const customersRoutes = require("./routes/customers");
 // const projectRoutes = require("./routes/projects");
 const authRoutes = require("./routes/auth");
 
 // Usa le route
-// app.use("/clients", clientsRoutes);
 // app.use("/projects", projectRoutes);
+app.use("/employees", employeeRoutes);
+app.use("/customers", customersRoutes);
 app.use("/employees", employeeRoutes);
 app.use("/auth", authRoutes);
 

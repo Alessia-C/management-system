@@ -12,7 +12,7 @@ import { logout } from "./pages/Logout";
 import Employees from "./pages/Employees/Employees";
 import Settings from "./pages/Settings";
 import Projects from "./pages/Projects/Projects";
-import Clients from "./pages/Clients";
+import Customers from "./pages/Customers/Customers";
 import Reset from "./pages/Login/Reset";
 import store from "./store";
 import OutletPage from "./components/OutletPage";
@@ -42,12 +42,12 @@ function App() {
           element: <Reset />,
         },
         {
-          path: "clients",
+          path: "customers",
           element: <OutletPage />,
           children: [
             {
               index: true,
-              element: <Clients />,
+              element: <Customers />,
             },
             {
               path: "newclient",

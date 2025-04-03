@@ -5,7 +5,7 @@ import classes from "./CardUser.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ContentEmplyeesCard, IntroEmplyeesCard } from "../CardsContent/EmplyeesCard";
 import { ContentProjectsCard, IntroProjectsCard } from "../CardsContent/ProjectsCard";
-import { ContentClientsCard, IntroClientsCard } from "../CardsContent/ClientsCard";
+import { ContentCustomersCard, IntroCustomersCard } from "../CardsContent/CustomersCard";
 
 const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
   const navigate = useNavigate();
@@ -26,9 +26,9 @@ const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
       content = <ContentProjectsCard data={card} />;
       path = "detailproject";
       break;
-    case "/clients":
-      intro = <IntroClientsCard data={card} />;
-      content = <ContentClientsCard data={card} />;
+    case "/customers":
+      intro = <IntroCustomersCard data={card} />;
+      content = <ContentCustomersCard data={card} />;
       path = "detailproject";
       break;
     default:

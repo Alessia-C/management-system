@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-export const IntroClientsCard = ({ data }) => {
+export const IntroCustomersCard = ({ data }) => {
   return (
     <>
       <Typography>{data.company}</Typography>
@@ -10,7 +10,7 @@ export const IntroClientsCard = ({ data }) => {
     </>
   );
 };
-export const ContentClientsCard = ({ data }) => {
+export const ContentCustomersCard = ({ data }) => {
   return (
     <>
     </>

@@ -15,7 +15,7 @@ const SIDEBAR = [
     icon: <DashboardIcon fontSize="medium" />,
   },
   {
-    path: "/clients",
+    path: "/customers",
     title: "Clienti",
     icon: <GroupIcon fontSize="medium" />,
   },

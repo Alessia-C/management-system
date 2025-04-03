@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import PageContent from "../components/PageContent/PageContent";
+import PageContent from "../../components/PageContent/PageContent";
 import { GridActionsCellItem } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Dialog from "@mui/material/Dialog";
@@ -9,8 +9,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
-import { useFetch } from "../hooks/useFetch";
-import SwitchComponentView from "../components/UI/SwitchComponentView";
+import { useDeleteDataById, useFetch } from "../../hooks/useFetch";
+import SwitchComponentView from "../../components/UI/SwitchComponentView";
 import { useNavigate } from "react-router-dom";
 
 function DeleteUserActionItem({ deleteUser, ...props }) {
@@ -49,14 +49,14 @@ function DeleteUserActionItem({ deleteUser, ...props }) {
   );
 }
 
-const Clients = () => {
-  const { data } = useFetch("clients", []);
-  const navigate = useNavigate();
+const Customers = () => {
+  const { data } = useFetch("customers", []);
+  const { deleteById } = useDeleteDataById();
 
-  console.log(data);
+  const navigate = useNavigate();
   
-  const deleteUser = (client) => {
-    console.log(client);
+  const handleDelete = async (id) => {
+    await deleteById("customers", id);
   };
 
   const newClientHandler = () => {
@@ -147,7 +147,7 @@ const Clients = () => {
             label="Delete"
             showInMenu
             icon={<DeleteIcon />}
-            deleteUser={() => deleteUser(params.id)}
+            deleteUser={() => handleDelete(params.id)}
             closeMenuOnClick={false}
           />,
         ],
@@ -174,4 +174,4 @@ const Clients = () => {
   );
 };
 
-export default Clients;
+export default Customers;
