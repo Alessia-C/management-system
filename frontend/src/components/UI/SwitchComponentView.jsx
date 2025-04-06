@@ -47,6 +47,8 @@ const SwitchComponentView = ({ columns, data, cardElement }) => {
           </Button>
         </Box>
       </Box>
+
+      
       {mode === "card" ? (
         <ListCard cards={data} key={"card"} />
       ) : (
