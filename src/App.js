@@ -18,6 +18,7 @@ import store from "./store";
 import OutletPage from "./components/OutletPage";
 import NewEmployee from "./pages/Employees/NewEmployee";
 import DetailEmployee from "./pages/Employees/DetailEmployee";
+import DetailProject from "./pages/Projects/DetailProject";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,7 +43,21 @@ function App() {
         },
         {
           path: "clients",
-          element: <Clients />,
+          element: <OutletPage />,
+          children: [
+            {
+              index: true,
+              element: <Clients />,
+            },
+            {
+              path: "newclient",
+              element: <NewEmployee />,
+            },
+            {
+              path: "detailclient/:id",
+              element: <DetailEmployee />,
+            },
+          ],
         },
         {
           path: "employees",
@@ -64,7 +79,21 @@ function App() {
         },
         {
           path: "projects",
-          element: <Projects />,
+          element: <OutletPage />,
+          children: [
+            {
+              index: true,
+              element: <Projects />,
+            },
+            {
+              path: "newproject",
+              element: <NewEmployee />,
+            },
+            {
+              path: "detailproject/:id",
+              element: <DetailProject />,
+            },
+          ],
         },
         {
           path: "settings",

@@ -1,0 +1,32 @@
+.wrapCards {
+  display: grid;
+  grid-template-rows: max-content;
+  gap: 2em;
+  transition: 1s ease-in-out;
+}
+
+/* Large Desktop (>=1200px) */
+@media (min-width: 1300px) {
+  .wrapCards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Desktop (>992px e <=1200px) */
+@media (min-width: 994px) and (max-width: 1299px){
+  .wrapCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Tablet (>=768px e <992px) */
+@media (min-width: 768px) and (max-width: 991px){
+  .wrapCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (<768px) */
+@media (max-width: 767px) {
+  .wrapCards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

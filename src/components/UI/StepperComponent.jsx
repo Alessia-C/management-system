@@ -3,11 +3,10 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
-import Button from "@mui/material/Button";
 import ReusableForm from "../ReusableForm";
 import Card from "./Card/Card";
 
-export default function StepperComponent({ steps, onSubmit, length = 2 }) {
+export default function StepperComponent({ steps, onSubmit, length = 2, classCss = 'stepperWrap' }) {
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState({});
 
@@ -32,9 +31,8 @@ export default function StepperComponent({ steps, onSubmit, length = 2 }) {
     setCompleted({});
   };
 
-  console.log();
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card style={classCss}>
       <Stepper nonLinear activeStep={activeStep}>
         {steps.map((step, index) => (
           <Step key={step.label} completed={completed[index]}>

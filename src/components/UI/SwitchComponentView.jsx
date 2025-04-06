@@ -4,7 +4,7 @@ import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../store/uiSlice";
-import ListCard from "../ListCard";
+import ListCard from "../ListCards/ListCard";
 import TableComponent from "../TableComponent";
 
 const SwitchComponentView = ({ columns, data, cardElement }) => {

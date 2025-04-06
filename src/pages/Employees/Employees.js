@@ -54,7 +54,7 @@ const Employees = () => {
         flex: 1,
       },
     ],
-    [data]
+    []
   );
 
   const newEmployeeHandler = () => {

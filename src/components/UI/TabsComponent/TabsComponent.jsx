@@ -35,15 +35,25 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function TabsComponent({ tabs }) {
+export default function TabsComponent({ tabs, cssclass = 'cardForm' }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const handleSubmit = (values) => {
+
+    // const { data, error } = await supabase
+    // .from('projects')
+    // .update({ other_column: 'otherValue' })
+    // .eq('some_column', 'someValue')
+    // .select()
+        
+  }
+
   return (
-    <Card style="cardForm">
+    <Card style={cssclass}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -57,7 +67,7 @@ export default function TabsComponent({ tabs }) {
       </Box>
       {tabs.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
-          <ReusableForm fields={tab.fields} />
+          <ReusableForm fields={tab.fields} onSubmit={handleSubmit} />
         </CustomTabPanel>
       ))}
     </Card>

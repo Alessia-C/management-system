@@ -6,41 +6,43 @@ import classes from "./FormComponent/Form.module.css";
 import { renderInput } from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
 
-const ReusableForm = ({
-  fields,
-  labelCta = "Salva",
-  style = "genericForm",
-  onSubmit,
-  stepsForm,
-  login,
-  checkBtn,
-  handleNext,
-  handleBack,
-}) => {
+const ReusableForm = (params) => {
+  const {
+    fields,
+    labelCta = "Salva",
+    style = "genericForm",
+    onSubmit,
+    stepsForm,
+    login,
+    checkBtn,
+    handleNext,
+    handleBack,
+  } = params;
+
   const navigate = useNavigate();
   const formData = useSelector((state) => state.form.formData);
   const initialForm = useSelector((state) => state.form.initialValues);
+  const checkInitialForm =
+    typeof initialForm === "object" && Object.keys(initialForm).length > 0;
 
-  const initialValues =
-    typeof initialForm === "object" && initialForm !== null
-      ? initialForm
-      : fields.reduce((acc, field) => {
-          if (field.type === "array") {
-            acc[field.name] = formData[field.name] || [];
-          } else if (field.type === "object") {
-            acc[field.name] = formData[field.name] || {};
-            Object.keys(field.fields).forEach((subField) => {
-              acc[field.name][subField] =
-                formData[field.name]?.[subField] || "";
-            });
-          } else if (field.type === "date") {
-            acc[field.name] = formData[field.name] || null;
-          } else {
-            acc[field.name] =
-              formData[field.name] !== undefined ? formData[field.name] : "";
-          }
-          return acc;
-        }, {});
+  const initialValues = checkInitialForm
+    ? initialForm
+    : fields.reduce((acc, field) => {
+        if (field.type === "array") {
+          acc[field.name] = formData[field.name] || [];
+        } else if (field.type === "object") {
+          acc[field.name] = formData[field.name] || {};
+          Object.keys(field.fields).forEach((subField) => {
+            acc[field.name][subField] = formData[field.name]?.[subField] || "";
+          });
+        } else if (field.type === "date") {
+          acc[field.name] = formData[field.name] || null;
+        } else {
+          acc[field.name] =
+            formData[field.name] !== undefined ? formData[field.name] : "";
+        }
+        return acc;
+      }, {});
 
   const formik = useFormik({
     initialValues,

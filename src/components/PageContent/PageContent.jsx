@@ -3,7 +3,7 @@ import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 // import classes from "../pages/Dashboard/Dashboard.module.css";
 import { useSelector } from "react-redux";
-import LoadingComponent from "../UI/LoadingComponent";
+import LoadingComponent from "../UI/LoadingComponent/LoadingComponent";
 import classes from "./PageContent.module.css";
 
 const PageContent = ({
