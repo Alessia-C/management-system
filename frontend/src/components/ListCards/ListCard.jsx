@@ -1,18 +1,20 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { Fragment } from "react";
 import ContainerUser from "../CardUser/CardUser";
-import classes from './ListCard.module.css'
+import classes from "./ListCard.module.css";
 
-const ListCard = ({ cards, cardElement }) => {
+const ListCard = ({ cards, cardElement, handleDelete }) => {
   return (
     <Box className={classes.wrapCards}>
       {cards.map((item) => {
         return (
-          <ContainerUser
-            card={item}
-            key={item.id}
-            cardElement={cardElement}
-          />
+          <Fragment key={item.id}>
+            <ContainerUser
+              card={item}
+              cardElement={cardElement}
+              handleDelete={handleDelete}
+            />
+          </Fragment>
         );
       })}
     </Box>

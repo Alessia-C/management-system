@@ -10,5 +10,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space);
+  margin-bottom: 1em;
 }

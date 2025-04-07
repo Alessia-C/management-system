@@ -10,7 +10,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import { useDeleteDataById, useFetch } from "../../hooks/useFetch";
-import SwitchComponentView from "../../components/UI/SwitchComponentView";
+import SwitchComponentView from "../../components/UI/SwitchComponent/SwitchComponentView";
 import { useNavigate } from "react-router-dom";
 
 function DeleteUserActionItem({ deleteUser, ...props }) {
@@ -169,6 +169,7 @@ const Customers = () => {
         data={data}
         columns={columns}
         cardElement={cardElement}
+        handleDelete={handleDelete}
       />
     </PageContent>
   );

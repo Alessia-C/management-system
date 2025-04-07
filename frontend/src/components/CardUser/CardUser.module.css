@@ -27,13 +27,3 @@
   font-size: 18px;
   font-weight: 600;
 }
-
-.wrapCta {
-  display: flex;
-  gap: 1em;
-  margin-top: 1em;
-}
-
-.wrapCta button {
-  width: 100%;
-}

@@ -19,3 +19,17 @@
 .wrapCard.detailsCard {
   padding: 0;
 }
+
+.wrapCta {
+  display: flex;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.wrapCta .removeCta {
+  flex: 1;
+}
+
+.wrapCta .actionCta {
+  flex: 2;
+}

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import PageContent from "../../components/PageContent/PageContent";
 import { useFetch } from "../../hooks/useFetch";
-import SwitchComponentView from "../../components/UI/SwitchComponentView";
+import SwitchComponentView from "../../components/UI/SwitchComponent/SwitchComponentView";
 import { useNavigate } from "react-router-dom";
 
 const Employees = () => {
@@ -26,19 +26,26 @@ const Employees = () => {
         flex: 1,
       },
       {
-        field: "email",
-        headerName: "Email",
+        field: "seniority_level",
+        headerName: "Seniority",
         filterable: false,
         resizable: false,
         flex: 1,
       },
-      {
-        field: "phone_number",
-        headerName: "Telefono",
-        filterable: false,
-        resizable: false,
-        flex: 1,
-      },
+      // {
+      //   field: "email",
+      //   headerName: "Email",
+      //   filterable: false,
+      //   resizable: false,
+      //   flex: 1,
+      // },
+      // {
+      //   field: "phone_number",
+      //   headerName: "Telefono",
+      //   filterable: false,
+      //   resizable: false,
+      //   flex: 1,
+      // },
       {
         field: "department",
         headerName: "Settore",

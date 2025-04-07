@@ -35,7 +35,7 @@ const PageContent = ({
             </Button>
           )}
         </Box>
-        <Divider sx={{ marginBottom: "2em" }} />
+        <Divider sx={{ marginBottom: "1em" }} />
         {loading ? <LoadingComponent /> : children}
       </Box>
     </Box>

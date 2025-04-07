@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import React, { useMemo } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import PageContent from "../../components/PageContent/PageContent"
-import SwitchComponentView from "../../components/UI/SwitchComponentView";
+import SwitchComponentView from "../../components/UI/SwitchComponent/SwitchComponentView";
 
 
 const Projects = () => {

@@ -1,30 +1,34 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 export const IntroCustomersCard = ({ data }) => {
   return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="h6">{data.company}</Typography>
+      <Typography>{data.status}</Typography>
+    </Box>
+  );
+};
+
+export const ContentCustomersCard = ({ data }) => {
+  return (
     <>
-      <Typography>{data.company}</Typography>
       <Typography>Referente: {data.name}</Typography>
+      <Typography>Contatti:</Typography>
+      <Typography>{data.phone} - {data.email}</Typography>
       <Typography>Ultimo pagamento: {data.last_payment}</Typography>
     </>
   );
 };
-export const ContentCustomersCard = ({ data }) => {
-  return (
-    <>
-    </>
-  );
-};
 
-// company: "Tech Innovators";
-// contract: "Contratto a tempo indeterminato";
-// email: "giovanni.rossi@tech.com";
-// id: 1;
-// last_payment: "2024-11-30";
-// last_update: "2024-12-01";
-// name: "Giovanni Rossi";
-// phone: "+391234567890";
-// project: "Sviluppo Software";
-// project_id: 1;
-// status: "Attivo";
+
+// "project": "Gestione IT",
+// "contract": "annuale",
+// "lastUpdate": "2024-03-19T23:00:00.000Z",
+// "lastPayment": "2024-03-14T23:00:00.000Z"

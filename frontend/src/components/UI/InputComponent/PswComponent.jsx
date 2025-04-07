@@ -14,7 +14,7 @@ const PswComponent = ({ formik, element,  }) => {
   };
 
   return (
-    <Box>
+    <>
       <TextField
         name={element.name}
         label={element.label}
@@ -47,7 +47,7 @@ const PswComponent = ({ formik, element,  }) => {
         {...formik.getFieldProps(element.value)}
       />
       {element.login && <Link to="/resetpassword">Password dimenticata?</Link>}
-    </Box>
+    </>
   );
 };
 

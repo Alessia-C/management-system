@@ -1,13 +1,21 @@
 import React from "react";
 import Card from "../UI/Card/Card";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+
 import classes from "./CardUser.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ContentEmplyeesCard, IntroEmplyeesCard } from "../CardsContent/EmplyeesCard";
-import { ContentProjectsCard, IntroProjectsCard } from "../CardsContent/ProjectsCard";
-import { ContentCustomersCard, IntroCustomersCard } from "../CardsContent/CustomersCard";
+import { EmplyeesCard } from "../CardsContent/EmplyeesCard";
+import {
+  ContentProjectsCard,
+  IntroProjectsCard,
+} from "../CardsContent/ProjectsCard";
+import {
+  ContentCustomersCard,
+  IntroCustomersCard,
+} from "../CardsContent/CustomersCard";
+import ActionCard from "../UI/Card/ActionCard";
 
-const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
+const CardUser = ({ card, cssClass = "wrapCardContent", handleDelete }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,8 +25,7 @@ const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
 
   switch (location.pathname) {
     case "/employees":
-      intro = <IntroEmplyeesCard data={card} />;
-      content = <ContentEmplyeesCard data={card} />;
+      content = <EmplyeesCard data={card} />;
       path = "detailemployee";
       break;
     case "/projects":
@@ -35,21 +42,24 @@ const CardUser = ({ card, cssClass = "wrapCardContent" }) => {
       intro = "Componente non trovato";
   }
 
+  const handleAction = () => {
+    return navigate(`${path}/${card.id}`);
+  };
+
+  const handleDeleteAction = () => {
+    return handleDelete(card.id);
+  };
+
   return (
     <Box sx={{ minHeight: "100%" }}>
       <Card style={cssClass}>
-        <Box className={classes.introCard}>{intro}</Box>
-        <Box sx={{ margin: "2em 0" }}>{content}</Box>
+        {intro && <Box className={classes.introCard}>{intro}</Box>}
+        {content && content}
         <Box sx={{ width: "100%" }} className={classes.content}>
-          <Box className={classes.wrapCta}>
-            <Button
-              variant="contained"
-              type="button"
-              onClick={() => navigate(`${path}/${card.id}`)}
-            >
-              Dettaglio
-            </Button>
-          </Box>
+          <ActionCard
+            handleAction={handleAction}
+            handleDelete={handleDeleteAction}
+          />
         </Box>
       </Card>
     </Box>
