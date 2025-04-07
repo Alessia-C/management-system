@@ -6,18 +6,19 @@ import classes from "./FormComponent/Form.module.css";
 import { renderInput } from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
 
-const ReusableForm = (params) => {
+const ReusableForm = (props) => {
   const {
     fields,
     labelCta = "Salva",
     style = "genericForm",
     onSubmit,
     stepsForm,
-    login,
+    login = false,
     checkBtn,
-    handleNext,
-    handleBack,
-  } = params;
+    handleNext = null,
+    handleBack = null,
+  } = props;
+  
 
   const navigate = useNavigate();
   const formData = useSelector((state) => state.form.formData);
@@ -59,13 +60,12 @@ const ReusableForm = (params) => {
       ))}
       <Box className={classes.wrapCta}>
         {!login && (
-          <Button
-            onClick={handleBack !== null ? handleBack : () => navigate(-1)}
+          <Button onClick={stepsForm !== 0 ? handleBack : () => navigate(-1)}
           >
-            {handleBack !== null ? "Indietro" : "Annulla"}
+            {stepsForm !== 0 ? "Indietro" : "Annulla"}
           </Button>
         )}
-        {!login && stepsForm && !checkBtn ? (
+        {!login && stepsForm < 2 ? (
           <>
             <Button variant="contained" onClick={handleNext}>
               Avanti

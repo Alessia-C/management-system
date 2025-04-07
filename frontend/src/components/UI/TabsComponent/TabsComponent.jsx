@@ -35,28 +35,36 @@ CustomTabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function TabsComponent({ tabs, cssclass = 'cardForm' }) {
-  const [value, setValue] = useState(0);
+export default function TabsComponent({
+  tabs,
+  cssclass = "cardForm",
+  handleUpdateData,
+}) {
+  const [currentTab, setCurrentTab] = useState(0);
+
+  const handleNext = () => {
+    setCurrentTab((prev) => prev + 1);
+  };
+
+  const handleBack = () => {
+    setCurrentTab((prev) => prev - 1);
+  };
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setCurrentTab(newValue);
   };
 
   const handleSubmit = (values) => {
+    console.log(values);
 
-    // const { data, error } = await supabase
-    // .from('projects')
-    // .update({ other_column: 'otherValue' })
-    // .eq('some_column', 'someValue')
-    // .select()
-        
-  }
+    handleUpdateData(values);
+  };
 
   return (
     <Card style={cssclass}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
-          value={value}
+          value={currentTab}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
@@ -66,8 +74,14 @@ export default function TabsComponent({ tabs, cssclass = 'cardForm' }) {
         </Tabs>
       </Box>
       {tabs.map((tab, index) => (
-        <CustomTabPanel key={index} value={value} index={index}>
-          <ReusableForm fields={tab.fields} onSubmit={handleSubmit} />
+        <CustomTabPanel key={index} value={currentTab} index={index}>
+          <ReusableForm
+            fields={tab.fields}
+            stepsForm={currentTab}
+            onSubmit={handleSubmit}
+            handleNext={handleNext}
+            handleBack={handleBack}
+          />
         </CustomTabPanel>
       ))}
     </Card>
