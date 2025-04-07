@@ -34,6 +34,79 @@ router.get("/:id", (req, res) => {
   });
 });
 
+// Aggiorna i dati di un dipendente
+router.put("/:id", (req, res) => {
+  const employeeId = req.params.id;
+
+  const {
+    full_name,
+    date_of_birth,
+    fiscal_code,
+    address,
+    phone_number,
+    email,
+    start_date,
+    position,
+    department,
+    seniority_level,
+    salary,
+    contract_type,
+    probation_period,
+    working_hours,
+    work_location,
+  } = req.body;
+
+  const sql = `UPDATE employees SET 
+    full_name = ?, 
+    date_of_birth = ?, 
+    fiscal_code = ?, 
+    address = ?, 
+    phone_number = ?, 
+    email = ?, 
+    start_date = ?, 
+    position = ?, 
+    department = ?, 
+    seniority_level = ?, 
+    salary = ?, 
+    contract_type = ?, 
+    probation_period = ?, 
+    working_hours = ?, 
+    work_location = ?
+    WHERE id = ?`;
+  
+  const values = [
+    full_name,
+    date_of_birth,
+    fiscal_code,
+    address,
+    phone_number,
+    email,
+    start_date,
+    position,
+    department,
+    seniority_level,
+    salary,
+    contract_type,
+    probation_period,
+    working_hours,
+    work_location,
+    employeeId,
+  ];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Errore nell'aggiornamento dei dati:", err);
+      return res
+        .status(500)
+        .json({ error: "Errore nell'aggiornamento dei dati", details: err });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Dipendente non trovato" });
+    }
+    res.json({ message: "Dati del dipendente aggiornati con successo" });
+  });
+});
+
 // Eliminare un dipendente
 router.delete("/:id", (req, res) => {
   const employeeId = req.params.id;
