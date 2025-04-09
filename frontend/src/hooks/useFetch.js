@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import supabase from "../backend/supabase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearLoading, startLoading } from "../store/uiSlice";
