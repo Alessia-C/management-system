@@ -8,6 +8,8 @@ import { updateForm } from "../../../store/formSlice";
 const DateComponent = ({ formik, element }) => {
   const dispatch = useDispatch();
 
+  console.log(element.name, formik.values[element.name]);
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
@@ -19,9 +21,8 @@ const DateComponent = ({ formik, element }) => {
             : null
         }
         onChange={(newValue) => {
-          const formattedValue = newValue ? newValue.format("YYYY-MM-DD") : "";
-          formik.setFieldValue(element.name, formattedValue);
-          dispatch(updateForm({ name: element.name, value: formattedValue }));
+          formik.setFieldValue(element.name, newValue);
+          dispatch(updateForm({ name: element.name, value: newValue }));
         }}
         color={
           formik.touched[element.name] && formik.errors[element.name]

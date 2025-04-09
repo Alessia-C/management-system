@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 const DetailEmployee = () => {
   const params = useParams();
   const loading = useSelector((state) => state.ui.loading);
+  const formData = useSelector((state) => state.form.formData);
 
   const { data } = useGetUser("employees", {}, params.id);
   const { deleteById } = useDeleteDataById();
@@ -19,17 +20,16 @@ const DetailEmployee = () => {
     await deleteById("employees", params.id);
   };
 
-  const handleUpdateData = async (values) => {
-    console.log(values);
+  const handleUpdateData = async () => {
     
-    const newValues = { ...values };
-    // newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
-    // newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
+    const newValues = { ...formData };
+    newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
+    newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
     newValues.salary = parseInt(newValues.salary);
     newValues.department = newValues.department.value || "indefinite_term";
     newValues.position = newValues.position.value || "Software Engineer";
     newValues.seniority_level = newValues.seniority_level.value || "Mid";
-    console.log("submit ", values, newValues);
+
     try {
       const response = await fetch(
         `http://localhost:4000/employees/${params.id}`,
