@@ -38,7 +38,7 @@ CustomTabPanel.propTypes = {
 export default function TabsComponent({
   tabs,
   cssclass = "cardForm",
-  handleUpdateData,
+  onSubmit,
 }) {
   const [currentTab, setCurrentTab] = useState(0);
 
@@ -52,38 +52,37 @@ export default function TabsComponent({
 
   const handleChange = (event, newValue) => {
     setCurrentTab(newValue);
+    
   };
 
   const handleSubmit = (values) => {
-    console.log(values);
-
-    handleUpdateData(values);
+    onSubmit(values);
   };
 
   return (
     <Card style={cssclass}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={currentTab}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          {tabs.map((tab, index) => (
-            <Tab key={index} label={tab.label} {...a11yProps(index)} />
-          ))}
-        </Tabs>
-      </Box>
-      {tabs.map((tab, index) => (
-        <CustomTabPanel key={index} value={currentTab} index={index}>
-          <ReusableForm
-            fields={tab.fields}
-            stepsForm={currentTab}
-            onSubmit={handleSubmit}
-            handleNext={handleNext}
-            handleBack={handleBack}
-          />
-        </CustomTabPanel>
-      ))}
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={currentTab}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            {tabs.map((tab, index) => (
+              <Tab key={index} label={tab.label} {...a11yProps(index)} />
+            ))}
+          </Tabs>
+        </Box>
+        {tabs.map((tab, index) => (
+          <CustomTabPanel key={index} value={currentTab} index={index}>
+            <ReusableForm
+              fields={tab.fields}
+              stepsForm={currentTab}
+              onSubmit={handleSubmit}
+              handleNext={handleNext}
+              handleBack={handleBack}
+            />
+          </CustomTabPanel>
+        ))}
     </Card>
   );
 }

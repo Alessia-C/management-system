@@ -18,7 +18,6 @@ const ReusableForm = (props) => {
     handleNext = null,
     handleBack = null,
   } = props;
-  
 
   const navigate = useNavigate();
   const formData = useSelector((state) => state.form.formData);
@@ -60,8 +59,7 @@ const ReusableForm = (props) => {
       ))}
       <Box className={classes.wrapCta}>
         {!login && (
-          <Button onClick={stepsForm !== 0 ? handleBack : () => navigate(-1)}
-          >
+          <Button onClick={stepsForm !== 0 ? handleBack : () => navigate(-1)}>
             {stepsForm !== 0 ? "Indietro" : "Annulla"}
           </Button>
         )}

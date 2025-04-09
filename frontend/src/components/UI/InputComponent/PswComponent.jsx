@@ -18,7 +18,7 @@ const PswComponent = ({ formik, element,  }) => {
       <TextField
         name={element.name}
         label={element.label}
-        type={!showPassword ? element.type : "text"}
+        type={showPassword ? "text" : "password"}
         value={formik.values[element.name] || ''}
         onChange={formik.handleChange}
         color={

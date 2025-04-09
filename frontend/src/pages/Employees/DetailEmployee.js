@@ -20,14 +20,16 @@ const DetailEmployee = () => {
   };
 
   const handleUpdateData = async (values) => {
+    console.log(values);
+    
     const newValues = { ...values };
-    newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
-    newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
+    // newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
+    // newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
     newValues.salary = parseInt(newValues.salary);
     newValues.department = newValues.department.value || "indefinite_term";
     newValues.position = newValues.position.value || "Software Engineer";
     newValues.seniority_level = newValues.seniority_level.value || "Mid";
-    console.log(values, newValues);
+    console.log("submit ", values, newValues);
     try {
       const response = await fetch(
         `http://localhost:4000/employees/${params.id}`,
@@ -62,7 +64,7 @@ const DetailEmployee = () => {
         <TabsComponent
           tabs={employeesFields}
           cssclass="detailsCard"
-          handleUpdateData={handleUpdateData}
+          onSubmit={handleUpdateData}
         />
       )}
     </PageContent>
