@@ -1,0 +1,11 @@
+.mpWrapEmployeesInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    margin-bottom: 2em;
+    .mpEmployeesName{
+        text-align: center;
+    }
+}

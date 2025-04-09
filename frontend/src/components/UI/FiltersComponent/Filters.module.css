@@ -1,0 +1,11 @@
+.wrapFilter{
+    position: sticky;
+    top: 0;
+    background: #d7d5d5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: .8em;
+    width: 100%;
+    z-index: 99;
+}

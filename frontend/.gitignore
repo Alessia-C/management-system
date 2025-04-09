@@ -1,0 +1,42 @@
+# 📦 Dependencies
+node_modules/
+.pnp/
+.pnp.js
+package-lock.json
+yarn.lock
+
+# 🛠️ Build e produzione
+/build/
+/dist/
+.next/
+.out/
+
+# ⚙️ Configurazione e ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 🛑 Database e file temporanei
+*.sqlite
+*.sqlite3
+dump.sql
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 🖥️ IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 🖼️ OS / Sistema operativo
+.DS_Store
+Thumbs.db
+.env
+node_modules/
+node_modules/

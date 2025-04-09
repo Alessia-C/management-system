@@ -1,0 +1,29 @@
+.wrapCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  height: 100%;
+}
+
+.cardAvatar {
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.introCard {
+  text-align: center;
+}
+
+.introCard h5 {
+  margin-top: 0.5em;
+}
+
+.content {
+  width: 100%;
+}
+
+.boldText {
+  font-size: 18px;
+  font-weight: 600;
+}
