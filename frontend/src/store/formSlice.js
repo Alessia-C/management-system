@@ -10,6 +10,7 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     updateForm: (state, action) => {
+      console.log( action.payload.label,  action.payload.value);
       state.formData[action.payload.name] = action.payload.value;
     },
     setInitialValues: (state, action) => {

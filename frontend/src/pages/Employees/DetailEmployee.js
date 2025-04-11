@@ -21,15 +21,11 @@ const DetailEmployee = () => {
   };
 
   const handleUpdateData = async () => {
-    
     const newValues = { ...formData };
     newValues.date_of_birth = dayjs(newValues.date_of_birth).format("YYYY-MM-DD");
     newValues.start_date = dayjs(newValues.start_date).format("YYYY-MM-DD");
     newValues.salary = parseInt(newValues.salary);
-    newValues.department = newValues.department.value || "indefinite_term";
-    newValues.position = newValues.position.value || "Software Engineer";
-    newValues.seniority_level = newValues.seniority_level.value || "Mid";
-
+    
     try {
       const response = await fetch(
         `http://localhost:4000/employees/${params.id}`,

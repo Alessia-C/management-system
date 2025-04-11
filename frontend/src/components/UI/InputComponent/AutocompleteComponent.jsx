@@ -12,12 +12,12 @@ const AutocompleteComponent = ({ element, formik }) => {
     options.find((opt) => opt.value === formik.values[element.name]) || null
   );
 
-  useEffect(() => {
-    const newValue = options.find((opt) => opt.value === formik.values[element.name]) || null;
-    if (newValue?.value !== selectedValue?.value) {
-      setSelectedValue(newValue);
-    }
-  }, [options, formik.values[element.name]]);
+  // useEffect(() => {
+  //   const newValue = options.find((opt) => opt.value === formik.values[element.name]) || null;
+  //   if (newValue?.value !== selectedValue?.value) {
+  //     setSelectedValue(newValue);
+  //   }
+  // }, [options, formik.values[element.name]]);
 
   return (
     <Autocomplete
@@ -31,7 +31,7 @@ const AutocompleteComponent = ({ element, formik }) => {
         setSelectedValue(newValue);
         formik.setFieldValue(element.name, newValue ? newValue.value : "");
         dispatch(updateForm({ name: element.name, value: newValue ? newValue.value : "" }));
-      }}
+      }}lo
       isOptionEqualToValue={(option, value) => option.value === value?.value}
       getOptionLabel={(option) => option.label}
       renderInput={(params) => (

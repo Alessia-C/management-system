@@ -1,66 +1,66 @@
 // utils/positions.js
 const positions = [
-  { value: "manager", label: "Manager" },
-  { value: "frontEndDeveloper", label: "Front-End Developer" },
-  { value: "backEndDeveloper", label: "Back-End Developer" },
-  { value: "fullStackDeveloper", label: "Full-Stack Developer" },
-  { value: "uiDesigner", label: "UI Designer" },
-  { value: "uxDesigner", label: "UX Designer" },
-  { value: "analyst", label: "Business Analyst" },
-  { value: "engineer", label: "Engineer" },
+  { value: "1", label: "Manager" },
+  { value: "2", label: "Front-End Developer" },
+  { value: "3", label: "Back-End Developer" },
+  { value: "4", label: "Full-Stack Developer" },
+  { value: "5", label: "UI Designer" },
+  { value: "6", label: "UX Designer" },
+  { value: "7", label: "Business Analyst" },
+  { value: "8", label: "Engineer" },
   // Add more positions as needed
 ];
 
 export default positions;
 
 export const departments = [
-  { value: "engineering", label: "Engineering" },
-  { value: "sales", label: "Sales" },
-  { value: "marketing", label: "Marketing" },
-  { value: "finance", label: "Finance" },
-  { value: "operations", label: "Operations" },
-  { value: "IT", label: "IT" },
+  { value: "1", label: "Engineering" },
+  { value: "2", label: "Sales" },
+  { value: "3", label: "Marketing" },
+  { value: "4", label: "Finance" },
+  { value: "5", label: "Operations" },
+  { value: "6", label: "IT" },
 ];
 
 export const seniorityLevels = [
-  { value: "junior", label: "Junior" },
-  { value: "mid-level", label: "Mid-Level" },
-  { value: "senior", label: "Senior" },
-  { value: "principal", label: "Principal" },
-  { value: "lead", label: "Lead" },
+  { value: "1", label: "Junior" },
+  { value: "2", label: "Mid-Level" },
+  { value: "3", label: "Senior" },
+  { value: "4", label: "Principal" },
+  { value: "5", label: "Lead" },
 ];
 
 export const contractTypes = [
-  { value: "full_time", label: "Tempo pieno" },
-  { value: "part_time", label: "Tempo parziale" },
-  { value: "fixed_term", label: "Determinato" },
-  { value: "indefinite_term", label: "Indeterminato" },
-  { value: "apprenticeship", label: "Apprendistato" },
-  { value: "internship", label: "Stage" },
+  { value: "1", label: "Tempo pieno" },
+  { value: "2", label: "Tempo parziale" },
+  { value: "3", label: "Determinato" },
+  { value: "4", label: "Indeterminato" },
+  { value: "5", label: "Apprendistato" },
+  { value: "6", label: "Stage" },
 ];
 
 export const probationPeriods = [
-  { value: "30_days", label: "30 giorni" },
-  { value: "60_days", label: "60 giorni" },
-  { value: "90_days", label: "90 giorni" },
-  { value: "120_days", label: "120 giorni" },
-  { value: "180_days", label: "180 giorni" },
-  { value: "no_probation", label: "Nessun periodo di prova" },
+  { value: "1", label: "30 giorni" },
+  { value: "2", label: "60 giorni" },
+  { value: "3", label: "90 giorni" },
+  { value: "4", label: "120 giorni" },
+  { value: "5", label: "180 giorni" },
+  { value: "0", label: "Nessun periodo di prova" },
 ];
 
 export const workingHours = [
-  { value: "full_time", label: "Tempo pieno" },
-  { value: "part_time_morning", label: "Part-time (mattina)" },
-  { value: "part_time_afternoon", label: "Part-time (pomeriggio)" },
-  { value: "flexible_hours", label: "Orario flessibile" },
-  { value: "remote_work", label: "Lavoro da remoto" },
-  { value: "shifts", label: "Turni" },
+  { value: "1", label: "Tempo pieno" },
+  { value: "2", label: "Part-time (mattina)" },
+  { value: "3", label: "Part-time (pomeriggio)" },
+  { value: "4", label: "Orario flessibile" },
+  { value: "4", label: "Lavoro da remoto" },
+  { value: "6", label: "Turni" },
 ];
 
 export const workLocations = [
-  { value: "office", label: "Ufficio" },
-  { value: "remote", label: "Lavoro da remoto" },
-  { value: "client_site", label: "Presso il cliente" },
+  { value: "1", label: "Ufficio" },
+  { value: "2", label: "Lavoro da remoto" },
+  { value: "3", label: "Presso il cliente" },
 ];
 
 export const employeesFields = [
