@@ -49,7 +49,7 @@ const DetailEmployee = () => {
 
   return (
     <PageContent
-      label={`Dettaglio ${data?.full_name || ""}`}
+      label={data?.full_name || "Name"}
       labelCta="Elimina"
       color="error"
       action={handleDelete}
