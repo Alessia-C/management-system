@@ -7,5 +7,13 @@ const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 });
+db.getConnection((err, connection) => {
+  if (err) {
+    console.error("Errore di connessione al database:", err);
+    return;
+  }
+  console.log("Connessione al database riuscita!");
+  connection.release(); // Rilascia la connessione
+});
 
 module.exports = db;

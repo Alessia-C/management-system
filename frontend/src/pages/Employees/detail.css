@@ -1,0 +1,26 @@
+#mp-details-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  gap: 2em;
+}
+#mp-details-content .mp-card--body--section {
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2em;
+}
+
+#mp-details-content .mp-card--title--section {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+#mp-details-content .mp-card--body--section .mp-card--info {
+  margin-top: 1em;
+}
+
+#mp-details-content .mp-card--body--section .mp-card--info-label {
+  opacity: 0.6;
+}

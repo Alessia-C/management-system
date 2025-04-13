@@ -2,7 +2,7 @@ import { Avatar, Box, Chip, Typography } from "@mui/material";
 import React from "react";
 
 import classes from "./CardContent.module.css";
-import positions, { seniorityLevels } from "../../utils/employeesInfo";
+import { positions, seniorityLevels } from "../../utils/employeesInfo";
 
 export const EmplyeesCard = ({ data }) => {
   const positionLabel = positions.find((el) => el.value === data.position)?.label;
