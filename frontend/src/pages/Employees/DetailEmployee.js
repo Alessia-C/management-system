@@ -80,7 +80,7 @@ const DetailEmployee = () => {
   };
 
   const handleUpdate = () => {
-    navigate(`/updateemployee/${params.id}`)
+    navigate(`/employees/updateemployee/${params.id}`)
   }
 
   return (

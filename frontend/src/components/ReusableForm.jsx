@@ -17,6 +17,7 @@ const ReusableForm = (props) => {
     checkBtn,
     handleNext = null,
     handleBack = null,
+    totTabs = null
   } = props;
 
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const ReusableForm = (props) => {
             {stepsForm !== 0 ? "Indietro" : "Annulla"}
           </Button>
         )}
-        {!login && stepsForm < 2 ? (
+        {!login && stepsForm < totTabs - 1 ? (
           <>
             <Button variant="contained" onClick={handleNext}>
               Avanti

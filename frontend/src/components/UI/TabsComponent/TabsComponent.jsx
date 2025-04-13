@@ -58,7 +58,7 @@ export default function TabsComponent({
   const handleSubmit = (values) => {
     onSubmit(values);
   };
-
+  
   return (
     <Card style={cssclass}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -80,6 +80,7 @@ export default function TabsComponent({
               onSubmit={handleSubmit}
               handleNext={handleNext}
               handleBack={handleBack}
+              totTabs={tabs.length}
             />
           </CustomTabPanel>
         ))}

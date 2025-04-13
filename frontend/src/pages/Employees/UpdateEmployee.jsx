@@ -9,7 +9,7 @@ import { useGetUser } from "../../hooks/useFetch";
 
 const UpdateEmployee = () => {
   const params = useParams();
-  useGetUser("employees", {}, params.id);
+  const { data } = useGetUser("employees", {}, params.id);
   const formData = useSelector((state) => state.form.formData);
 
   const handleUpdateData = async () => {
@@ -41,7 +41,7 @@ const UpdateEmployee = () => {
     }
   };
   return (
-    <PageContent>
+    <PageContent label={data?.full_name || "Name"}>
       <TabsComponent
         tabs={employeesFields}
         cssclass="detailsCard"
