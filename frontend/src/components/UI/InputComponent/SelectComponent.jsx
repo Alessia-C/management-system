@@ -1,7 +1,16 @@
-import { FormControl, InputLabel, MenuItem, Select, FormHelperText } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormHelperText,
+} from "@mui/material";
 import React from "react";
+import { updateForm } from "../../../store/formSlice";
+import { useDispatch } from "react-redux";
 
 const SelectComponent = ({ element, formik }) => {
+  const dispatch = useDispatch();
   const isError = formik.touched[element.name] && Boolean(formik.errors[element.name]);
   const options = element.options?.length ? element.options : [{ label: "Nessuna opzione disponibile", value: "" }];
 
@@ -13,7 +22,10 @@ const SelectComponent = ({ element, formik }) => {
         id={element.name}
         label={element.label}
         value={formik.values[element.name] || ""}
-        onChange={(event) => formik.setFieldValue(element.name, event.target.value)}
+        onChange={(event) => {
+          formik.setFieldValue(element.name, event.target.value);
+          dispatch(updateForm({ name: element.name, value: event.target.value}));
+        }}
       >
         {options.map((item) => (
           <MenuItem value={item.value} key={item.value}>
@@ -21,7 +33,9 @@ const SelectComponent = ({ element, formik }) => {
           </MenuItem>
         ))}
       </Select>
-      {isError && <FormHelperText>{formik.errors[element.name]}</FormHelperText>}
+      {isError && (
+        <FormHelperText>{formik.errors[element.name]}</FormHelperText>
+      )}
     </FormControl>
   );
 };

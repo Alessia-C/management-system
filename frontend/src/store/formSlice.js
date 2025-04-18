@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   initialValues: {},
   formData: {},
+  configStructureForm: {},
 };
 
 const formSlice = createSlice({
@@ -16,8 +17,11 @@ const formSlice = createSlice({
       state.initialValues = action.payload;
       state.formData = action.payload;
     },
+    setStructureForm: (state, action) => {
+      state.configStructureForm = action.payload;
+    }
   },
 });
 
-export const { updateForm, setInitialValues } = formSlice.actions;
+export const { updateForm, setInitialValues, setStructureForm } = formSlice.actions;
 export default formSlice.reducer;

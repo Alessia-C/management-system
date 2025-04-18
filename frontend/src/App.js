@@ -19,6 +19,7 @@ import OutletPage from "./components/OutletPage";
 import NewEmployee from "./pages/Employees/NewEmployee";
 import DetailEmployee from "./pages/Employees/DetailEmployee";
 import DetailProject from "./pages/Projects/DetailProject";
+import UpdateEmployee from "./pages/Employees/UpdateEmployee";
 
 function App() {
   const router = createBrowserRouter([
@@ -70,6 +71,10 @@ function App() {
             {
               path: "newemployee",
               element: <NewEmployee />,
+            },
+            {
+              path: "updateemployee/:id",
+              element: <UpdateEmployee />,
             },
             {
               path: "detailemployee/:id",

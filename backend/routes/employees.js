@@ -37,6 +37,7 @@ router.get("/:id", (req, res) => {
 // Aggiorna i dati di un dipendente
 router.put("/:id", (req, res) => {
   const employeeId = req.params.id;
+// console.log("dati body:  " + req.body);
 
   const {
     full_name,
@@ -94,6 +95,8 @@ router.put("/:id", (req, res) => {
   ];
 
   db.query(sql, values, (err, result) => {
+    // console.log("Valori:", values);
+
     if (err) {
       console.error("Errore nell'aggiornamento dei dati:", err);
       return res

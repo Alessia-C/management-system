@@ -7,8 +7,6 @@ import { updateForm } from "../../../store/formSlice";
 
 const DateComponent = ({ formik, element }) => {
   const dispatch = useDispatch();
-
-  console.log(element.name, formik.values[element.name]);
   
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
